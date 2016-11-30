@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -33,7 +35,7 @@ public class ClienteDAO {
             
         }
         catch (SQLException ex) {
-            throw new RuntimeException("Erro ao inserir um autor no banco de dados. Origem="+ex.getMessage());
+            throw new RuntimeException("Erro ao inserir um cliente no banco de dados. Origem="+ex.getMessage());
         } finally{
             try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
             try{con.close();}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
@@ -48,9 +50,86 @@ public class ClienteDAO {
     }
     
     
+    public void atualizarCliente(Cliente cliente){
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        
+        try{
+            con = ConnectionFactory.getConnection();
+            stmt = con.prepareStatement("UPDATE cliente SET nome=? , sobrenome=?, rg=?, cpf=?, endereco=? WHERE id=?",PreparedStatement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getSobrenome());
+            stmt.setString(3, cliente.getRg());
+            stmt.setString(4, cliente.getCpf());
+            stmt.setString(5, cliente.getEndereco());
+            stmt.setString(6, Integer.toString(cliente.getId()));
+            stmt.executeUpdate();
+            
+        }
+        catch (SQLException ex) {
+            throw new RuntimeException("Erro ao atualizar um cliente no banco de dados. Origem="+ex.getMessage());
+        } finally{
+            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
+            try{con.close();}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
+        }
+        
+    }
     
     
     
+    public void excluirCliente(Cliente cliente){
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        
+        try{
+            con = ConnectionFactory.getConnection();
+            stmt = con.prepareStatement("DELETE FROM cliente WHERE id=?",PreparedStatement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, Integer.toString(cliente.getId()));
+            stmt.executeUpdate();
+            
+        }
+        catch (SQLException ex) {
+            throw new RuntimeException("Erro ao apagar um cliente no banco de dados. Origem="+ex.getMessage());
+        } finally{
+            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
+            try{con.close();}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
+        }
+    }
+    
+    
+    
+    public List<Cliente> lerClientes() throws SQLException{
+        //Select para pegar os Clientes
+        Connection con = null;
+        PreparedStatement stmt = null;
+        String sql = "SELECT * FROM cliente";
+        List<Cliente> clientes = null;
+        
+        try{
+            con = ConnectionFactory.getConnection();
+            stmt = con.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
+            
+            ResultSet resultado = stmt.executeQuery();
+            
+        while (resultado.next()) {
+            Cliente cliente = new Cliente(resultado.getString("nome"),resultado.getString("sobrenome"),resultado.getString("rg"),resultado.getString("cpf"),resultado.getString("endereco"));
+            cliente.setId(resultado.getInt("id"));
+            clientes.add(cliente);
+        }
+            
+        }
+        catch (SQLException ex) {
+            throw new RuntimeException("Erro ao consultar clientes no banco de dados. Origem="+ex.getMessage());
+        } finally{
+            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
+            try{con.close();}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
+        }
+    
+
+        return clientes;
+    }
     
     
     

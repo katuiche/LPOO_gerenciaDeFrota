@@ -5,6 +5,7 @@
  */
 package trabalho.locadora;
 
+import java.sql.SQLException;
 import trabalho.locadora.Veiculo.*;
 
 /**
@@ -18,11 +19,14 @@ public class TrabalhoLocadora {
      */
    
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         ClienteDAO d = new ClienteDAO();
-        Cliente cliente = new Cliente("João","Eugenio","1545454","7454554","Rua das ingridis");
-        d.inserirCliente(cliente);
+        Cliente cliente = new Cliente("lucas","Eugenio","sdfr","69786","Rua das lunas");
+        //d.inserirCliente(cliente);
         
+        for (Cliente c : d.lerClientes()){
+            System.out.println(c.getNome());
+        }
         
     }
     
