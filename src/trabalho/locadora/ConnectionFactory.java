@@ -8,7 +8,7 @@ public class ConnectionFactory {
 
     public static Connection getConnection() throws SQLException{
         String dbDriver= "com.mysql.jdbc.Driver";
-        String dbUrl= "jdbc:mysql://localhost/sistema";
+        String dbUrl= "jdbc:mysql://localhost/java";
         String dbUser= "root";
         String dbPwd= "";
         return DriverManager.getConnection(dbUrl, dbUser, dbPwd);
