@@ -19,6 +19,10 @@ public class TrabalhoLocadora {
    
     
     public static void main(String[] args) {
+        ClienteDAO d = new ClienteDAO();
+        Cliente cliente = new Cliente("João","Eugenio","1545454","7454554","Rua das ingridis");
+        d.inserirCliente(cliente);
+        
         
     }
     

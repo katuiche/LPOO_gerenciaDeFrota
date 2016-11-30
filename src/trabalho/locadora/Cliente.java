@@ -10,6 +10,7 @@ package trabalho.locadora;
  * @author Belniak
  */
 public class Cliente {
+    private int id;
     private String nome;
     private String sobrenome;
     private String rg;
@@ -23,6 +24,31 @@ public class Cliente {
         this.cpf = cpf;
         this.endereco = endereco;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     
     
 }
