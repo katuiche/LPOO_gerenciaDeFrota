@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -25,9 +26,9 @@ public class LocacaoDAO {
         try{
             con = ConnectionFactory.getConnection();
             stmt = con.prepareStatement("INSERT INTO locacao(dias,valor,data,cliente) VALUES (?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, Integer.toString((int) locacao.getDias()));
-            stmt.setString(2, cliente.getSobrenome());
-            stmt.setString(3, cliente.getRg());
+            stmt.setString(1, Integer.toString(locacao.getDias()));
+            stmt.setString(2, Double.toString(locacao.getValor()));
+            stmt.setString(3, Calendar.toString(locacao.getData()));
             stmt.setString(4, cliente.getCpf());
             stmt.executeUpdate();
             
