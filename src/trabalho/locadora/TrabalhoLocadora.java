@@ -23,10 +23,16 @@ public class TrabalhoLocadora {
         ClienteDAO d = new ClienteDAO();
         Cliente cliente = new Cliente("lucas","Eugenio","sdfr","69786","Rua das lunas");
         //d.inserirCliente(cliente);
+
+        Cliente c = d.consultarCliente(2);
+        System.out.println(c.getNome());
+        c.setNome("alfredo");
         
-        for (Cliente c : d.lerClientes()){
-            System.out.println(c.getNome());
-        }
+        d.excluirCliente(c);
+        
+        c = d.consultarCliente(2);
+        
+        System.out.println(c.getNome());
         
     }
     
