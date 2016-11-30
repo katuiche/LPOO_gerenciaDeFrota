@@ -60,7 +60,6 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
-<<<<<<< HEAD
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
@@ -77,8 +76,6 @@ public class Cliente {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-=======
->>>>>>> f0f82ed8dd72deb59618c15a99595ede39a286ee
     
     
     

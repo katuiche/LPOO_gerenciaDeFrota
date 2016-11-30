@@ -105,13 +105,8 @@ public class ClienteDAO {
         //Select para pegar os Clientes
         Connection con = null;
         PreparedStatement stmt = null;
-<<<<<<< HEAD
         String sql = "SELECT * FROM cliente";
         List<Cliente> clientes = new ArrayList<Cliente>();
-=======
->>>>>>> f0f82ed8dd72deb59618c15a99595ede39a286ee
-        
-        List<Cliente> clientes = new ArrayList();
         ResultSet resultado = null;
         try{
             con = ConnectionFactory.getConnection();
