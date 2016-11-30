@@ -32,6 +32,7 @@ public class ClienteDAO {
             stmt.setString(4, cliente.getCpf());
             stmt.setString(5, cliente.getEndereco());
             stmt.executeUpdate();
+            cliente.setId(lerIdCliente(stmt));
             
         }
         catch (SQLException ex) {
@@ -104,20 +105,25 @@ public class ClienteDAO {
         //Select para pegar os Clientes
         Connection con = null;
         PreparedStatement stmt = null;
+<<<<<<< HEAD
         String sql = "SELECT * FROM cliente";
         List<Cliente> clientes = new ArrayList<Cliente>();
+=======
+>>>>>>> f0f82ed8dd72deb59618c15a99595ede39a286ee
         
+        List<Cliente> clientes = new ArrayList();
+        ResultSet resultado = null;
         try{
             con = ConnectionFactory.getConnection();
-            stmt = con.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
+            stmt = con.prepareStatement("SELECT * FROM cliente");
             
-            ResultSet resultado = stmt.executeQuery();
+            resultado = stmt.executeQuery();
             
-        while (resultado.next()) {
-            Cliente cliente = new Cliente(resultado.getString("nome"),resultado.getString("sobrenome"),resultado.getString("rg"),resultado.getString("cpf"),resultado.getString("endereco"));
-            cliente.setId(resultado.getInt("id"));
-            clientes.add(cliente);
-        }
+            while (resultado.next()) {
+                Cliente cliente = new Cliente(resultado.getString("nome"),resultado.getString("sobrenome"),resultado.getString("rg"),resultado.getString("cpf"),resultado.getString("endereco"));
+                cliente.setId(resultado.getInt("id"));
+                clientes.add(cliente);
+            }
             
         }
         catch (SQLException ex) {
@@ -131,6 +137,36 @@ public class ClienteDAO {
         return clientes;
     }
     
-    
+    public Cliente consultarCliente(int id){
+        Cliente cliente = null;
+        
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        ResultSet resultado = null;
+        try{
+            con = ConnectionFactory.getConnection();
+            stmt = con.prepareStatement("SELECT * FROM cliente WHERE id=?");
+            stmt.setString(1, Integer.toString(id));
+            resultado = stmt.executeQuery();
+            
+            while (resultado.next()) {
+                cliente = new Cliente(resultado.getString("nome"),resultado.getString("sobrenome"),resultado.getString("rg"),resultado.getString("cpf"),resultado.getString("endereco"));
+                cliente.setId(resultado.getInt("id"));               
+            }
+            
+        }
+        catch (SQLException ex) {
+            throw new RuntimeException("Erro ao consultar clientes no banco de dados. Origem="+ex.getMessage());
+        } finally{
+            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
+            try{con.close();}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
+        }
+        
+        
+        
+        return cliente;
+    }
     
 }

@@ -6,6 +6,7 @@
 package trabalho.locadora;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import trabalho.locadora.Veiculo.*;
 
 /**
@@ -20,12 +21,32 @@ public class TrabalhoLocadora {
    
     
     public static void main(String[] args) throws SQLException {
-        ClienteDAO d = new ClienteDAO();
-        Cliente cliente = new Cliente("lucas","Eugenio","sdfr","69786","Rua das lunas");
-        //d.inserirCliente(cliente);
+        LocacaoDAO l = new LocacaoDAO();
+        Calendar c = Calendar.getInstance();
+        c.getTime();
         
-        for (Cliente c : d.lerClientes()){
-            System.out.println(c.getNome());
+        Locacao lo = new Locacao(null, c, 7, 80.2 );
+        
+       
+        l.inserirLocacao(lo);
+        
+        
+        for(Locacao f: l.listarLocacao()){
+            System.out.println(f.getId() + " " + f.getValor());
+        }
+        
+        lo.setValor(10.5);
+        
+        l.atualizarLocacao(lo);
+        
+        for(Locacao f: l.listarLocacao()){
+            System.out.println(f.getId() + " " + f.getValor());
+        }
+        
+        l.excluirLocacao(lo);
+        
+        for(Locacao f: l.listarLocacao()){
+            System.out.println(f.getId() + " " + f.getValor());
         }
         
     }
