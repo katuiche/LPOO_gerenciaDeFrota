@@ -105,7 +105,7 @@ public class ClienteDAO {
         Connection con = null;
         PreparedStatement stmt = null;
         String sql = "SELECT * FROM cliente";
-        List<Cliente> clientes = null;
+        List<Cliente> clientes = new ArrayList<Cliente>();
         
         try{
             con = ConnectionFactory.getConnection();
