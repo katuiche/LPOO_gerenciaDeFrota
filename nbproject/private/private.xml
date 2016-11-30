@@ -6,7 +6,8 @@
             <file>file:/E:/Cassiano/code/java/trabalho-locadora/src/trabalho/locadora/ddl.sql</file>
             <file>file:/E:/Cassiano/code/java/trabalho-locadora/src/trabalho/locadora/TrabalhoLocadora.java</file>
             <file>file:/E:/Cassiano/code/java/trabalho-locadora/src/trabalho/locadora/ClienteDAO.java</file>
-            <file>file:/E:/Cassiano/code/java/trabalho-locadora/src/trabalho/locadora/Cliente.java</file>
+            <file>file:/E:/Cassiano/code/java/trabalho-locadora/src/trabalho/locadora/LocacaoDAO.java</file>
+            <file>file:/E:/Cassiano/code/java/trabalho-locadora/src/trabalho/locadora/Locacao.java</file>
         </group>
     </open-files>
 </project-private>

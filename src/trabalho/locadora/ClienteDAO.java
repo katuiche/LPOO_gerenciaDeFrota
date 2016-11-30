@@ -32,6 +32,7 @@ public class ClienteDAO {
             stmt.setString(4, cliente.getCpf());
             stmt.setString(5, cliente.getEndereco());
             stmt.executeUpdate();
+            cliente.setId(lerIdCliente(stmt));
             
         }
         catch (SQLException ex) {

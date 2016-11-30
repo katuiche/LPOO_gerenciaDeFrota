@@ -44,4 +44,15 @@ public class Locacao {
     public Cliente getCliente(){
         return cliente;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+    
+    
+    
 }
