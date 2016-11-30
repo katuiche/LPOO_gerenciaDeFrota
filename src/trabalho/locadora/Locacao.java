@@ -16,6 +16,7 @@ public class Locacao {
     private double valor;
     Calendar data;
     Cliente cliente;
+    private int id = -1;
 
     public Locacao(Cliente cliente, Calendar data, int dias, double valor ) {
         this.dias = dias;
@@ -24,7 +25,13 @@ public class Locacao {
         this.cliente = cliente;
     }
     
+    public int getId(){
+        return id;
+    }
     
+    public int getDias(){
+        return dias;
+    }
     
     public double getValor(){
         return valor;
