@@ -153,18 +153,32 @@ public class MotoDAO {
             stmt.setString(6, Integer.toString(moto.getAno()));
             stmt.setString(7, Double.toString(moto.getValorCompra()));
             stmt.setString(8, moto.getPlaca());
-           
+            
             stmt.executeUpdate();
             
-            int id = lerIdVeiculo(stmt);
+            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE placa = ?");
+            stmt.setString(1, moto.getPlaca());
+            stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
+            
+            int id = 0;
+            
+            while(rs.next()){
+                id = rs.getInt("id");
+            }
+            
+            
+            
             
             String modelo;
-            
+            //
             stmt = con.prepareStatement("UPDATE moto SET modelo = ? WHERE id_veiculo = ?",PreparedStatement.RETURN_GENERATED_KEYS);  
             
             modelo = moto.getModelo().toString();
             
             stmt.setString(1, modelo);
+            stmt.setString(2, Integer.toString(id));
+            
             
             stmt.executeUpdate();
             
@@ -188,17 +202,31 @@ public class MotoDAO {
         
         try{
             //DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            con = ConnectionFactory.getConnection();       
+            con = ConnectionFactory.getConnection(); 
             
-            stmt = con.prepareStatement("DELETE veiculo WHERE placa = ?",PreparedStatement.RETURN_GENERATED_KEYS);
+            
+            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE placa = ?");
+            stmt.setString(1, moto.getPlaca());
+            stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
+            
+            int id = 0;
+            
+            while(rs.next()){
+                id = rs.getInt("id");
+            }
+            
+            
+            
+            stmt = con.prepareStatement("DELETE FROM veiculo WHERE placa = ?",PreparedStatement.RETURN_GENERATED_KEYS);
             
             stmt.setString(1, moto.getPlaca());
            
             stmt.executeUpdate();
             
-            int id = lerIdVeiculo(stmt);
+         
             
-            stmt = con.prepareStatement("DELETE moto WHERE id_veiculo = ?",PreparedStatement.RETURN_GENERATED_KEYS);  
+            stmt = con.prepareStatement("DELETE FROM moto WHERE id_veiculo = ?",PreparedStatement.RETURN_GENERATED_KEYS);  
                       
             stmt.setString(1, Integer.toString(id));
             
@@ -217,7 +245,7 @@ public class MotoDAO {
     }
     
     
-    public Moto procurarMoto(String placa) throws SQLException{
+    public Moto consultarMoto(String placa) throws SQLException{
         //Select para pegar as locações
         Connection con = null;
         Moto moto = null;
