@@ -48,65 +48,65 @@ public class Tela0 extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        novo = new javax.swing.JButton();
-        novo1 = new javax.swing.JButton();
-        novo2 = new javax.swing.JButton();
-        novo3 = new javax.swing.JButton();
-        novo4 = new javax.swing.JButton();
-        novo5 = new javax.swing.JButton();
-        novo6 = new javax.swing.JButton();
+        listarClientes = new javax.swing.JButton();
+        registrarVan = new javax.swing.JButton();
+        registrarMoto = new javax.swing.JButton();
+        registrarAuto = new javax.swing.JButton();
+        locarVeiculos = new javax.swing.JButton();
+        devolverVeiculos = new javax.swing.JButton();
+        venderVeiculos = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        novo.setText("Listar Clientes");
-        novo.addActionListener(new java.awt.event.ActionListener() {
+        listarClientes.setText("Listar Clientes");
+        listarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novoActionPerformed(evt);
+                listarClientesActionPerformed(evt);
             }
         });
 
-        novo1.setText("Registrar Van");
-        novo1.addActionListener(new java.awt.event.ActionListener() {
+        registrarVan.setText("Registrar Van");
+        registrarVan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novo1ActionPerformed(evt);
+                registrarVanActionPerformed(evt);
             }
         });
 
-        novo2.setText("Registrar Motocicleta");
-        novo2.addActionListener(new java.awt.event.ActionListener() {
+        registrarMoto.setText("Registrar Motocicleta");
+        registrarMoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novo2ActionPerformed(evt);
+                registrarMotoActionPerformed(evt);
             }
         });
 
-        novo3.setText("Registrar Automóvel");
-        novo3.addActionListener(new java.awt.event.ActionListener() {
+        registrarAuto.setText("Registrar Automóvel");
+        registrarAuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novo3ActionPerformed(evt);
+                registrarAutoActionPerformed(evt);
             }
         });
 
-        novo4.setText("Locar Veículos");
-        novo4.addActionListener(new java.awt.event.ActionListener() {
+        locarVeiculos.setText("Locar Veículos");
+        locarVeiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novo4ActionPerformed(evt);
+                locarVeiculosActionPerformed(evt);
             }
         });
 
-        novo5.setText("Devolver Veículos");
-        novo5.addActionListener(new java.awt.event.ActionListener() {
+        devolverVeiculos.setText("Devolver Veículos");
+        devolverVeiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novo5ActionPerformed(evt);
+                devolverVeiculosActionPerformed(evt);
             }
         });
 
-        novo6.setText("Vender Veículos");
-        novo6.addActionListener(new java.awt.event.ActionListener() {
+        venderVeiculos.setText("Vender Veículos");
+        venderVeiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novo6ActionPerformed(evt);
+                venderVeiculosActionPerformed(evt);
             }
         });
 
@@ -117,17 +117,17 @@ public class Tela0 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(novo3)
+                    .addComponent(registrarAuto)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(novo2)
-                            .addComponent(novo)
-                            .addComponent(novo1))
+                            .addComponent(registrarMoto)
+                            .addComponent(listarClientes)
+                            .addComponent(registrarVan))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(novo6)
-                            .addComponent(novo5)
-                            .addComponent(novo4))))
+                            .addComponent(venderVeiculos)
+                            .addComponent(devolverVeiculos)
+                            .addComponent(locarVeiculos))))
                 .addContainerGap(194, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -135,18 +135,18 @@ public class Tela0 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(novo)
-                    .addComponent(novo5))
+                    .addComponent(listarClientes)
+                    .addComponent(devolverVeiculos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(novo1)
-                    .addComponent(novo6))
+                    .addComponent(registrarVan)
+                    .addComponent(venderVeiculos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(novo2)
-                    .addComponent(novo4))
+                    .addComponent(registrarMoto)
+                    .addComponent(locarVeiculos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(novo3)
+                .addComponent(registrarAuto)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -166,34 +166,39 @@ public class Tela0 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoActionPerformed
+    private void listarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarClientesActionPerformed
         new Tela1().setVisible(true);
-    }//GEN-LAST:event_novoActionPerformed
+    }//GEN-LAST:event_listarClientesActionPerformed
 
-    private void novo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novo1ActionPerformed
-        new Tela2(0).setVisible(true);
+    private void registrarVanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarVanActionPerformed
+        new Tela2(1).setVisible(true);
         
-    }//GEN-LAST:event_novo1ActionPerformed
+    }//GEN-LAST:event_registrarVanActionPerformed
 
-    private void novo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novo2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novo2ActionPerformed
+    private void registrarMotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarMotoActionPerformed
+        new Tela2(0).setVisible(true);
+    }//GEN-LAST:event_registrarMotoActionPerformed
 
-    private void novo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novo3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novo3ActionPerformed
+    private void registrarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarAutoActionPerformed
+        new Tela2(2).setVisible(true);
+    }//GEN-LAST:event_registrarAutoActionPerformed
 
-    private void novo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novo4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novo4ActionPerformed
+    private void locarVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locarVeiculosActionPerformed
+        try{
+        //new Tela3().setVisible(true);
+        throw new Exception("oi");
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"Erro ao conectar com o banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_locarVeiculosActionPerformed
 
-    private void novo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novo5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novo5ActionPerformed
+    private void devolverVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverVeiculosActionPerformed
+        new Tela4().setVisible(true);
+    }//GEN-LAST:event_devolverVeiculosActionPerformed
 
-    private void novo6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novo6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_novo6ActionPerformed
+    private void venderVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_venderVeiculosActionPerformed
+        new Tela5().setVisible(true);
+    }//GEN-LAST:event_venderVeiculosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,14 +243,14 @@ public class Tela0 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton devolverVeiculos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton novo;
-    private javax.swing.JButton novo1;
-    private javax.swing.JButton novo2;
-    private javax.swing.JButton novo3;
-    private javax.swing.JButton novo4;
-    private javax.swing.JButton novo5;
-    private javax.swing.JButton novo6;
+    private javax.swing.JButton listarClientes;
+    private javax.swing.JButton locarVeiculos;
+    private javax.swing.JButton registrarAuto;
+    private javax.swing.JButton registrarMoto;
+    private javax.swing.JButton registrarVan;
+    private javax.swing.JButton venderVeiculos;
     // End of variables declaration//GEN-END:variables
 }

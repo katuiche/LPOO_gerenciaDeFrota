@@ -33,7 +33,21 @@ public class Tela2 extends javax.swing.JFrame {
         //modeloTabela = new ModeloTabelaCliente();
         tipoVeiculo = tipo;
         
+        
+        
         initComponents();
+        
+        switch(tipoVeiculo){
+            case 0:
+                comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CG125", "CBR500" }));
+                break;
+            case 2:
+                comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gol", "Celta", "Palio" }));
+                break;    
+            case 1:
+                comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kombi", "Sprinter" }));
+                break;
+        }
         //Registra o evento da modificação da tabela
         //TabelaEscutadorEvento escutador = new TabelaEscutadorEvento();
         //modeloTabela.addTableModelListener(escutador);
@@ -233,6 +247,8 @@ public class Tela2 extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Tela2().setVisible(true);
+                
+                
             }
         });
     }
