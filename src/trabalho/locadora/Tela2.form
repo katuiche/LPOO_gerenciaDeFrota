@@ -76,7 +76,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="novo" min="-2" max="-2" attributes="0"/>
+                      <Component id="adicionarVeiculo" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -110,7 +110,7 @@
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="novo" min="-2" max="-2" attributes="0"/>
+              <Component id="adicionarVeiculo" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -220,12 +220,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoPlacaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="novo">
+    <Component class="javax.swing.JButton" name="adicionarVeiculo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Adicionar Ve&#xed;culo"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="novoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adicionarVeiculoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
