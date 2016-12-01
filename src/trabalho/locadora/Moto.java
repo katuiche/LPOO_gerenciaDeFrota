@@ -18,12 +18,13 @@ public class Moto extends Veiculo{
     }
 
     public Moto(ModeloMoto modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca) {
-        this.estado = estado;
+        this.modelo = modelo;
         this.categoria = categoria;
         this.estado = estado;
         this.placa = placa;
         this.ano = ano;
         this.marca = marca;
+        this.locacao = null;
     }
     
     
@@ -75,6 +76,10 @@ public class Moto extends Veiculo{
     @Override
     public int getAno() {
         return ano;
+    }
+    
+    public double getValorCompra(){
+        return valorCompra;
     }
 
     @Override

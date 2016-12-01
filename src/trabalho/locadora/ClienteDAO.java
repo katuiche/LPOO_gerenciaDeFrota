@@ -33,7 +33,7 @@ public class ClienteDAO {
             stmt.setString(5, cliente.getEndereco());
             stmt.executeUpdate();
             cliente.setId(lerIdCliente(stmt));
-            
+            con.close();
         }
         catch (SQLException ex) {
             throw new RuntimeException("Erro ao inserir um cliente no banco de dados. Origem="+ex.getMessage());
@@ -66,7 +66,7 @@ public class ClienteDAO {
             stmt.setString(5, cliente.getEndereco());
             stmt.setString(6, Integer.toString(cliente.getId()));
             stmt.executeUpdate();
-            
+            con.close();
         }
         catch (SQLException ex) {
             throw new RuntimeException("Erro ao atualizar um cliente no banco de dados. Origem="+ex.getMessage());
@@ -89,7 +89,7 @@ public class ClienteDAO {
             stmt = con.prepareStatement("DELETE FROM cliente WHERE id=?",PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, Integer.toString(cliente.getId()));
             stmt.executeUpdate();
-            
+            con.close();
         }
         catch (SQLException ex) {
             throw new RuntimeException("Erro ao apagar um cliente no banco de dados. Origem="+ex.getMessage());
@@ -119,7 +119,7 @@ public class ClienteDAO {
                 cliente.setId(resultado.getInt("id"));
                 clientes.add(cliente);
             }
-            
+            con.close();
         }
         catch (SQLException ex) {
             throw new RuntimeException("Erro ao consultar clientes no banco de dados. Origem="+ex.getMessage());
@@ -150,7 +150,7 @@ public class ClienteDAO {
                 cliente = new Cliente(resultado.getString("nome"),resultado.getString("sobrenome"),resultado.getString("rg"),resultado.getString("cpf"),resultado.getString("endereco"));
                 cliente.setId(resultado.getInt("id"));               
             }
-            
+            con.close();
         }
         catch (SQLException ex) {
             throw new RuntimeException("Erro ao consultar clientes no banco de dados. Origem="+ex.getMessage());
@@ -221,7 +221,7 @@ public class ClienteDAO {
             try{con.close();}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
         }
     
-
+        con.close();
         return clientes;
     }
 }

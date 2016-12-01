@@ -30,7 +30,13 @@ public class VeiculoDAO {
             stmt.setString(2, veiculo.getEstado().toString());
             stmt.setString(3, veiculo.getCategoria().toString());
             stmt.setString(4, veiculo.getPlaca());
-            stmt.setString(5, Integer.toString(veiculo.getLocacao().getId()));
+            if (veiculo.getLocacao() != null){
+                stmt.setString(5, Integer.toString(veiculo.getLocacao().getId()));
+            }
+            else {
+                stmt.setString(5,"0");
+            }
+            
            
             stmt.executeUpdate();
             
