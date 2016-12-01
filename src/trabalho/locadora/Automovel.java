@@ -13,19 +13,25 @@ import java.util.Calendar;
  */
 public class Automovel extends Veiculo{
 
+    double getValorCompra() {
+        return valorCompra;
+    }
+
     enum ModeloAutomovel{
         Gol, Celta, Palio;
     }
     
     private ModeloAutomovel modelo;
     
-    public Automovel(ModeloAutomovel modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca) {
-        this.estado = estado;
+    public Automovel(ModeloAutomovel modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca,double valorCompra) {
+        this.modelo = modelo;
         this.categoria = categoria;
         this.estado = estado;
         this.placa = placa;
         this.ano = ano;
         this.marca = marca;
+        this.locacao = null;
+        this.valorCompra = valorCompra;
     }
     
     @Override
