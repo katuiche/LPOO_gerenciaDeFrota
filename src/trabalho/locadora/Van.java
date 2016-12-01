@@ -12,6 +12,10 @@ import java.util.Calendar;
  * @author Belniak
  */
 public class Van extends Veiculo{
+
+    double getValorCompra() {
+        return valorCompra;
+    }
     enum ModeloVan{
         Kombi, Sprinter;
         
@@ -28,8 +32,9 @@ public class Van extends Veiculo{
     private ModeloVan modelo;
     
     
-    public Van(ModeloVan modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca, double valorCompra) {
-        this.estado = estado;
+    public Van(ModeloVan modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca,double valorCompra) {
+        this.modelo = modelo;
+
         this.categoria = categoria;
         this.estado = estado;
         this.placa = placa;
