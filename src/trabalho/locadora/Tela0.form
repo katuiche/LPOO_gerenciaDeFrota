@@ -52,18 +52,18 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="novo3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="registrarAuto" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="novo2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="novo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="novo1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="registrarMoto" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="listarClientes" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="registrarVan" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="novo6" min="-2" max="-2" attributes="0"/>
-                              <Component id="novo5" min="-2" max="-2" attributes="0"/>
-                              <Component id="novo4" min="-2" max="-2" attributes="0"/>
+                              <Component id="venderVeiculos" min="-2" max="-2" attributes="0"/>
+                              <Component id="devolverVeiculos" min="-2" max="-2" attributes="0"/>
+                              <Component id="locarVeiculos" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -76,81 +76,81 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="novo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="novo5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="listarClientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="devolverVeiculos" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="novo1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="novo6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="registrarVan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="venderVeiculos" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="novo2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="novo4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="registrarMoto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="locarVeiculos" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="novo3" min="-2" max="-2" attributes="0"/>
+                  <Component id="registrarAuto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="69" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="novo">
+        <Component class="javax.swing.JButton" name="listarClientes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Listar Clientes"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="novoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listarClientesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="novo1">
+        <Component class="javax.swing.JButton" name="registrarVan">
           <Properties>
             <Property name="text" type="java.lang.String" value="Registrar Van"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="novo1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarVanActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="novo2">
+        <Component class="javax.swing.JButton" name="registrarMoto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Registrar Motocicleta"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="novo2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarMotoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="novo3">
+        <Component class="javax.swing.JButton" name="registrarAuto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Registrar Autom&#xf3;vel"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="novo3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarAutoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="novo4">
+        <Component class="javax.swing.JButton" name="locarVeiculos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Locar Ve&#xed;culos"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="novo4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="locarVeiculosActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="novo5">
+        <Component class="javax.swing.JButton" name="devolverVeiculos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Devolver Ve&#xed;culos"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="novo5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="devolverVeiculosActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="novo6">
+        <Component class="javax.swing.JButton" name="venderVeiculos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Vender Ve&#xed;culos"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="novo6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="venderVeiculosActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

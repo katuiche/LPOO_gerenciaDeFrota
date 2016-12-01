@@ -26,11 +26,11 @@ public class Tela4 extends javax.swing.JFrame {
     /**
      * Creates new form TabelaClienteJFrame
      */
-     private ModeloTabelaVeiculo modeloTabelaVeiculo;
+     private ModeloTabelaLocados modeloTabelaVeiculo;
      private int linhaClicada=-1;
     
     public Tela4() {
-        modeloTabelaVeiculo = new ModeloTabelaVeiculo();
+        modeloTabelaVeiculo = new ModeloTabelaLocados();
         initComponents();
         //Registra o evento da modificação da tabela
         //TabelaEscutadorEvento escutador = new TabelaEscutadorEvento();
@@ -91,15 +91,15 @@ public class Tela4 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(scrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPanel)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(listar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(listar1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 701, Short.MAX_VALUE)
                         .addComponent(limpar)))
                 .addContainerGap())
         );

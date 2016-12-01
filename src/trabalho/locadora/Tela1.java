@@ -50,7 +50,6 @@ public class Tela1 extends javax.swing.JFrame {
         scrollPanel = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         listar = new javax.swing.JButton();
-        limpar = new javax.swing.JButton();
         excluir = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         novo = new javax.swing.JButton();
@@ -83,13 +82,6 @@ public class Tela1 extends javax.swing.JFrame {
         listar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listarActionPerformed(evt);
-            }
-        });
-
-        limpar.setText("Limpar");
-        limpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limparActionPerformed(evt);
             }
         });
 
@@ -156,11 +148,6 @@ public class Tela1 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(novo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(atualizar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -182,7 +169,12 @@ public class Tela1 extends javax.swing.JFrame {
                                         .addComponent(jLabel3)
                                         .addGap(39, 39, 39)
                                         .addComponent(cpf))))
-                            .addComponent(endereco))))
+                            .addComponent(endereco)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(novo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(atualizar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -204,11 +196,11 @@ public class Tela1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(novo)
                     .addComponent(atualizar))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,9 +214,7 @@ public class Tela1 extends javax.swing.JFrame {
                     .addComponent(scrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(listar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(limpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(excluir)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -232,16 +222,14 @@ public class Tela1 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listar)
-                    .addComponent(limpar)
                     .addComponent(excluir))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -256,10 +244,6 @@ public class Tela1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listarActionPerformed
 
-    private void limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparActionPerformed
-        modeloTabela.limpaTabela();
-    }//GEN-LAST:event_limparActionPerformed
-
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
         try {
             ClienteDAO dao = new ClienteDAO();
@@ -272,11 +256,14 @@ public class Tela1 extends javax.swing.JFrame {
 
             }
             for(Cliente cliente:listaExcluir){
-                modeloTabela.removeCliente(cliente);
+                if(dao.checarLocacao(cliente.getId()) > 0)
+                    modeloTabela.removeCliente(cliente);
+                else
+                    throw new Exception("O cliente tem veículos locados");
             }
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"Erro ao realizar exclusão de clientes.", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_excluirActionPerformed
 
@@ -397,7 +384,6 @@ public class Tela1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton limpar;
     private javax.swing.JButton listar;
     private javax.swing.JTextField nome;
     private javax.swing.JButton novo;

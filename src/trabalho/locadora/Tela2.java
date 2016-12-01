@@ -33,7 +33,21 @@ public class Tela2 extends javax.swing.JFrame {
         //modeloTabela = new ModeloTabelaCliente();
         tipoVeiculo = tipo;
         
+        
+        
         initComponents();
+        
+        switch(tipoVeiculo){
+            case 0:
+                comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CG125", "CBR500" }));
+                break;
+            case 2:
+                comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gol", "Celta", "Palio" }));
+                break;    
+            case 1:
+                comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kombi", "Sprinter" }));
+                break;
+        }
         //Registra o evento da modificação da tabela
         //TabelaEscutadorEvento escutador = new TabelaEscutadorEvento();
         //modeloTabela.addTableModelListener(escutador);
@@ -66,7 +80,7 @@ public class Tela2 extends javax.swing.JFrame {
         textoValor = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         textoPlaca = new javax.swing.JTextField();
-        novo = new javax.swing.JButton();
+        adicionarVeiculo = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -107,10 +121,10 @@ public class Tela2 extends javax.swing.JFrame {
             }
         });
 
-        novo.setText("Adicionar Veículo");
-        novo.addActionListener(new java.awt.event.ActionListener() {
+        adicionarVeiculo.setText("Adicionar Veículo");
+        adicionarVeiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novoActionPerformed(evt);
+                adicionarVeiculoActionPerformed(evt);
             }
         });
 
@@ -153,7 +167,7 @@ public class Tela2 extends javax.swing.JFrame {
                         .addComponent(textoPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(novo)))
+                        .addComponent(adicionarVeiculo)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -180,16 +194,26 @@ public class Tela2 extends javax.swing.JFrame {
                     .addComponent(textoPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(18, 18, 18)
-                .addComponent(novo)
+                .addComponent(adicionarVeiculo)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoActionPerformed
-
-    }//GEN-LAST:event_novoActionPerformed
+    private void adicionarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarVeiculoActionPerformed
+        System.out.println((String)comboModelo.getSelectedItem());
+        Veiculo v;
+        switch(tipoVeiculo){
+            case 0:
+                
+                v = new Moto((String)comboModelo.getSelectedItem(),(String)comboCategoria.getSelectedItem(),(String)comboEstado.getSelectedItem(),);
+                break;
+            
+        }
+        
+        
+    }//GEN-LAST:event_adicionarVeiculoActionPerformed
 
     private void textoValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoValorActionPerformed
         // TODO add your handling code here:
@@ -233,11 +257,14 @@ public class Tela2 extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Tela2().setVisible(true);
+                
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adicionarVeiculo;
     private javax.swing.JComboBox<String> comboCategoria;
     private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JComboBox<String> comboMarca;
@@ -250,7 +277,6 @@ public class Tela2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton novo;
     private javax.swing.JTextField textoPlaca;
     private javax.swing.JTextField textoValor;
     // End of variables declaration//GEN-END:variables

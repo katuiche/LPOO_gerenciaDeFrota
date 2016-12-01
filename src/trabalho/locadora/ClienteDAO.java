@@ -224,4 +224,37 @@ public class ClienteDAO {
         con.close();
         return clientes;
     }
+    
+    public int checarLocacao(int id){
+        Cliente cliente = null;
+        
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int count = 0;
+        ResultSet resultado = null;
+        try{
+            con = ConnectionFactory.getConnection();
+            stmt = con.prepareStatement("SELECT * FROM locacao WHERE ? = locacao.cliente");
+            stmt.setInt(1, id);
+            resultado = stmt.executeQuery();
+            
+            while (resultado.next()) {
+               count++;              
+            }
+            
+        }
+        catch (SQLException ex) {
+            throw new RuntimeException("Erro ao consultar clientes no banco de dados. Origem="+ex.getMessage());
+        } finally{
+            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
+            try{con.close();}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
+        }
+        
+        
+        
+        return count;
+    }
+    
+    
 }
