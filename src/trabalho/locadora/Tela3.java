@@ -26,11 +26,15 @@ public class Tela3 extends javax.swing.JFrame {
     /**
      * Creates new form TabelaClienteJFrame
      */
-     private ModeloTabelaCliente modeloTabela;
-     private int linhaClicada=-1;
+     private ModeloTabelaVeiculo modeloTabelaVeiculo;
+     private ModeloTabelaCliente modeloTabelaCliente;
+     private int linhaClicadaCliente=-1;
+     private int linhaClicadaVeiculo=-1;
     
     public Tela3() {
-        modeloTabela = new ModeloTabelaCliente();
+        modeloTabelaCliente = new ModeloTabelaCliente();
+        modeloTabelaVeiculo = new ModeloTabelaVeiculo();
+        
         initComponents();
         //Registra o evento da modificação da tabela
         //TabelaEscutadorEvento escutador = new TabelaEscutadorEvento();
@@ -50,7 +54,7 @@ public class Tela3 extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         textoSobrenome = new javax.swing.JTextField();
         scrollPanel = new javax.swing.JScrollPane();
-        tabela = new javax.swing.JTable();
+        tabelaClientes = new javax.swing.JTable();
         textoNome = new javax.swing.JTextField();
         textoCpf = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -67,7 +71,7 @@ public class Tela3 extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         comboCategoria = new javax.swing.JComboBox<>();
         scrollPanel1 = new javax.swing.JScrollPane();
-        tabela1 = new javax.swing.JTable();
+        tabelaVeiculos = new javax.swing.JTable();
         listar1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         textoDias = new javax.swing.JTextField();
@@ -88,13 +92,13 @@ public class Tela3 extends javax.swing.JFrame {
             }
         });
 
-        tabela.setModel(modeloTabela);
-        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelaClientes.setModel(modeloTabelaCliente);
+        tabelaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaMouseClicked(evt);
+                tabelaClientesMouseClicked(evt);
             }
         });
-        scrollPanel.setViewportView(tabela);
+        scrollPanel.setViewportView(tabelaClientes);
 
         textoNome.setToolTipText("Filtro por nome");
         textoNome.addActionListener(new java.awt.event.ActionListener() {
@@ -187,13 +191,13 @@ public class Tela3 extends javax.swing.JFrame {
 
         comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Popular", "Intermediário", "Luxo" }));
 
-        tabela1.setModel(modeloTabela);
-        tabela1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelaVeiculos.setModel(modeloTabelaVeiculo);
+        tabelaVeiculos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabela1MouseClicked(evt);
+                tabelaVeiculosMouseClicked(evt);
             }
         });
-        scrollPanel1.setViewportView(tabela1);
+        scrollPanel1.setViewportView(tabelaVeiculos);
 
         listar1.setText("Filtrar");
         listar1.addActionListener(new java.awt.event.ActionListener() {
@@ -337,7 +341,13 @@ public class Tela3 extends javax.swing.JFrame {
     private void listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarActionPerformed
         try {
             ClienteDAO dao = new ClienteDAO();
-            modeloTabela.setListaClientes(dao.lerClientes());
+            Cliente cliente = new Cliente();
+            cliente.setNome(textoNome.getText());
+            cliente.setSobrenome(textoSobrenome.getText());
+            cliente.setCpf(textoCpf.getText());
+            
+            modeloTabelaCliente.setListaClientes(dao.filtrarClientes(cliente));
+            linhaClicadaCliente = -1;
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,"Erro ao conectar com o banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -347,24 +357,24 @@ public class Tela3 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textoNomeActionPerformed
 
-    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+    private void tabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseClicked
        //Pega a linha clicada
-        linhaClicada = tabela.rowAtPoint(evt.getPoint());
+        linhaClicadaCliente = tabelaClientes.rowAtPoint(evt.getPoint());
         //Pega o cliente da linha clidada
-        Cliente cliente = modeloTabela.getCliente(linhaClicada);
+        Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaCliente);
         //Seta os dados nos componentes
-        textoNome.setText(cliente.getNome());
+        /*textoNome.setText(cliente.getNome());
         sobrenome.setText(cliente.getSobrenome());
         rg.setText(cliente.getRg());
         cpf.setText(cliente.getCpf());
-        endereco.setText(cliente.getEndereco());
+        endereco.setText(cliente.getEndereco());*/
         
         
-    }//GEN-LAST:event_tabelaMouseClicked
+    }//GEN-LAST:event_tabelaClientesMouseClicked
 
-    private void tabela1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tabela1MouseClicked
+    private void tabelaVeiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaVeiculosMouseClicked
+        linhaClicadaVeiculo = tabelaVeiculos.rowAtPoint(evt.getPoint());
+    }//GEN-LAST:event_tabelaVeiculosMouseClicked
 
     private void textoSobrenomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoSobrenomeActionPerformed
         // TODO add your handling code here:
@@ -451,8 +461,8 @@ public class Tela3 extends javax.swing.JFrame {
     private javax.swing.JButton listar2;
     private javax.swing.JScrollPane scrollPanel;
     private javax.swing.JScrollPane scrollPanel1;
-    private javax.swing.JTable tabela;
-    private javax.swing.JTable tabela1;
+    private javax.swing.JTable tabelaClientes;
+    private javax.swing.JTable tabelaVeiculos;
     private javax.swing.JTextField textoCpf;
     private javax.swing.JFormattedTextField textoData;
     private javax.swing.JTextField textoDias;

@@ -164,4 +164,64 @@ public class ClienteDAO {
         return cliente;
     }
     
+    public List<Cliente> filtrarClientes(Cliente filtro) throws SQLException{
+        //Select para pegar os Clientes
+        Connection con = null;
+        PreparedStatement stmt = null;
+        String sql = "SELECT * FROM cliente";
+        List<Cliente> clientes = new ArrayList<Cliente>();
+        ResultSet resultado = null;
+        boolean and = false;
+        
+        if(!"".equals(filtro.getNome())){
+            sql += " WHERE nome = '"+filtro.getNome()+"'";
+            and = true;
+        }
+        
+        if(!"".equals(filtro.getSobrenome())){
+            if(and)
+                sql += " AND";
+            else
+                sql += " WHERE";
+            sql += " sobrenome = '"+filtro.getSobrenome()+"'";
+            and = true;
+        }
+        
+        if(!"".equals(filtro.getCpf())){
+            if(and)
+                sql += " AND";
+            else
+                sql += " WHERE";
+            sql += " cpf = '"+filtro.getCpf()+"'";
+            and = true;
+        }
+        
+                
+                
+                
+        //System.out.println(sql);
+                
+        try{
+            con = ConnectionFactory.getConnection();
+            stmt = con.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
+            
+            resultado = stmt.executeQuery();
+            
+            while (resultado.next()) {
+                Cliente cliente = new Cliente(resultado.getString("nome"),resultado.getString("sobrenome"),resultado.getString("rg"),resultado.getString("cpf"),resultado.getString("endereco"));
+                cliente.setId(resultado.getInt("id"));
+                clientes.add(cliente);
+            }
+            
+        }
+        catch (SQLException ex) {
+            throw new RuntimeException("Erro ao consultar clientes no banco de dados. Origem="+ex.getMessage());
+        } finally{
+            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
+            try{con.close();}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
+        }
+    
+
+        return clientes;
+    }
 }

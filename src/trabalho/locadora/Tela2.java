@@ -29,14 +29,20 @@ public class Tela2 extends javax.swing.JFrame {
     private int tipoVeiculo = 0; //0=moto/1=van/2=auto
     private int linhaClicada=-1;
     
-    public Tela2() {
+    public Tela2(int tipo) {
         //modeloTabela = new ModeloTabelaCliente();
+        tipoVeiculo = tipo;
+        
         initComponents();
         //Registra o evento da modificação da tabela
         //TabelaEscutadorEvento escutador = new TabelaEscutadorEvento();
         //modeloTabela.addTableModelListener(escutador);
     }
 
+    public Tela2() {
+        initComponents();
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

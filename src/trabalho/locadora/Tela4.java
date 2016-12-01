@@ -26,11 +26,11 @@ public class Tela4 extends javax.swing.JFrame {
     /**
      * Creates new form TabelaClienteJFrame
      */
-     private ModeloTabelaCliente modeloTabela;
+     private ModeloTabelaVeiculo modeloTabelaVeiculo;
      private int linhaClicada=-1;
     
     public Tela4() {
-        modeloTabela = new ModeloTabelaCliente();
+        modeloTabelaVeiculo = new ModeloTabelaVeiculo();
         initComponents();
         //Registra o evento da modificação da tabela
         //TabelaEscutadorEvento escutador = new TabelaEscutadorEvento();
@@ -58,7 +58,7 @@ public class Tela4 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        tabela.setModel(modeloTabela);
+        tabela.setModel(modeloTabelaVeiculo);
         tabela.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaMouseClicked(evt);
@@ -122,27 +122,27 @@ public class Tela4 extends javax.swing.JFrame {
     private void listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarActionPerformed
         try {
             ClienteDAO dao = new ClienteDAO();
-            modeloTabela.setListaClientes(dao.lerClientes());
+            //modeloTabela.setListaClientes(dao.lerClientes());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,"Erro ao conectar com o banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_listarActionPerformed
 
     private void limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparActionPerformed
-        modeloTabela.limpaTabela();
+        //modeloTabela.limpaTabela();
     }//GEN-LAST:event_limparActionPerformed
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
        //Pega a linha clicada
         linhaClicada = tabela.rowAtPoint(evt.getPoint());
         //Pega o cliente da linha clidada
-        Cliente cliente = modeloTabela.getCliente(linhaClicada);
+        //Cliente cliente = modeloTabela.getCliente(linhaClicada);
         //Seta os dados nos componentes
-        nome.setText(cliente.getNome());
+        /*nome.setText(cliente.getNome());
         sobrenome.setText(cliente.getSobrenome());
         rg.setText(cliente.getRg());
         cpf.setText(cliente.getCpf());
-        endereco.setText(cliente.getEndereco());
+        endereco.setText(cliente.getEndereco());*/
         
         
     }//GEN-LAST:event_tabelaMouseClicked
