@@ -7,6 +7,7 @@ package trabalho.locadora;
 
 import java.sql.SQLException;
 import java.util.Calendar;
+import trabalho.locadora.Moto.ModeloMoto;
 import trabalho.locadora.Veiculo.*;
 
 /**
@@ -22,32 +23,32 @@ public class TrabalhoLocadora {
     
     public static void main(String[] args) throws SQLException {
         LocacaoDAO l = new LocacaoDAO();
-        Calendar c = Calendar.getInstance();
-        c.getTime();
+        MotoDAO m = new MotoDAO();
+        ClienteDAO c = new ClienteDAO();
         
-        Locacao lo = new Locacao(null, c, 7, 80.2 );
+        Moto mm = new Moto(ModeloMoto.CG125, Categoria.INTERMEDIARIO, Estado.DISPONIVEL , "XXX1254", 1997, Marca.Fiat);
         
-       
-        l.inserirLocacao(lo);
+        Cliente cc = c.consultarCliente(1);
         
-        
-        for(Locacao f: l.listarLocacao()){
-            System.out.println(f.getId() + " " + f.getValor());
-        }
-        
-        lo.setValor(10.5);
-        
-        l.atualizarLocacao(lo);
-        
-        for(Locacao f: l.listarLocacao()){
-            System.out.println(f.getId() + " " + f.getValor());
-        }
-        
-        l.excluirLocacao(lo);
-        
-        for(Locacao f: l.listarLocacao()){
-            System.out.println(f.getId() + " " + f.getValor());
-        }
+        m.inserirVeiculo(mm);
+//        
+//        for(Locacao f: l.listarLocacao()){
+//            System.out.println(f.getId() + " " + f.getValor());
+//        }
+//        
+//        lo.setValor(10.5);
+//        
+//        l.atualizarLocacao(lo);
+//        
+//        for(Locacao f: l.listarLocacao()){
+//            System.out.println(f.getId() + " " + f.getValor());
+//        }
+//        
+//        l.excluirLocacao(lo);
+//        
+//        for(Locacao f: l.listarLocacao()){
+//            System.out.println(f.getId() + " " + f.getValor());
+//        }
         
     }
     

@@ -41,7 +41,7 @@ public class LocacaoDAO {
                 
             stmt.executeUpdate();
             locacao.setId(lerIdLocacao(stmt));
-            
+            con.close();
         }
         catch (SQLException ex) {
             throw new RuntimeException("Erro ao inserir uma locação no banco de dados. Origem="+ex.getMessage());
@@ -77,7 +77,7 @@ public class LocacaoDAO {
                 stmt.setString(4,"0");
             stmt.setString(5, Integer.toString(locacao.getId()));
             stmt.executeUpdate();
-            
+            con.close();
         }
         catch (SQLException ex) {
             throw new RuntimeException("Erro ao atualizar uma locação no banco de dados. Origem="+ex.getMessage());
@@ -100,7 +100,7 @@ public class LocacaoDAO {
             stmt = con.prepareStatement("DELETE FROM locacao WHERE id=?",PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, Integer.toString(locacao.getId()));
             stmt.executeUpdate();
-            
+            con.close();
         }
         catch (SQLException ex) {
             throw new RuntimeException("Erro ao apagar uma locacao no banco de dados. Origem="+ex.getMessage());
@@ -132,7 +132,7 @@ public class LocacaoDAO {
                 locacao.setId(resultado.getInt("id"));
                 locacoes.add(locacao);
             }
-            
+            con.close();
         }
         catch (SQLException ex) {
             throw new RuntimeException("Erro ao consultar locações no banco de dados. Origem="+ex.getMessage());
@@ -167,7 +167,7 @@ public class LocacaoDAO {
                 locacao.setId(resultado.getInt("id"));
                           
             }
-            
+            con.close();
         }
         catch (SQLException ex) {
             throw new RuntimeException("Erro ao consultar clientes no banco de dados. Origem="+ex.getMessage());
