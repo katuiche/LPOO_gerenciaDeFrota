@@ -24,7 +24,7 @@ CREATE table veiculo(
     categoria varchar(50),
     placa varchar(50),
     locacao varchar(50),
-    ano date,
+    ano integer,
     valorCompra real
 );
 

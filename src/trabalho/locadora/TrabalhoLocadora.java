@@ -26,15 +26,17 @@ public class TrabalhoLocadora {
         MotoDAO m = new MotoDAO();
         ClienteDAO c = new ClienteDAO();
         
-        Moto mm = new Moto(ModeloMoto.CG125, Categoria.INTERMEDIARIO, Estado.DISPONIVEL , "XXX1254", 1997, Marca.Fiat);
+        Moto mm = new Moto(ModeloMoto.CG125, Categoria.INTERMEDIARIO, Estado.DISPONIVEL , "XXX1254", 1997, Marca.Fiat,155.00);
         
         Cliente cc = c.consultarCliente(1);
         
-        m.inserirVeiculo(mm);
-//        
-//        for(Locacao f: l.listarLocacao()){
-//            System.out.println(f.getId() + " " + f.getValor());
-//        }
+        m.inserirMoto(mm);
+        
+        
+        
+        for(Moto f: m.listarMoto()){
+            System.out.println(f.getAno() + " " + f.getValorCompra());
+        }
 //        
 //        lo.setValor(10.5);
 //        

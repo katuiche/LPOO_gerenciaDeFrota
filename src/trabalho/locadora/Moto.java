@@ -17,7 +17,7 @@ public class Moto extends Veiculo{
         CG125, CBR500;
     }
 
-    public Moto(ModeloMoto modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca) {
+    public Moto(ModeloMoto modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca,double valorCompra) {
         this.modelo = modelo;
         this.categoria = categoria;
         this.estado = estado;
@@ -25,6 +25,7 @@ public class Moto extends Veiculo{
         this.ano = ano;
         this.marca = marca;
         this.locacao = null;
+        this.valorCompra = valorCompra;
     }
     
     
