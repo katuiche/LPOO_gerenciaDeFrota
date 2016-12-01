@@ -14,34 +14,45 @@ import java.util.Calendar;
 public class Van extends Veiculo{
     enum ModeloVan{
         Kombi, Sprinter;
+        
+        public ModeloVan checkString(String str){
+            for(ModeloVan m:this.values()){
+                if(m.toString().equals(str))
+                    return m;
+            }
+            return null;
+        }
+        
     }
     
     private ModeloVan modelo;
     
     
-    public Van(ModeloVan modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca) {
+    public Van(ModeloVan modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca, double valorCompra) {
         this.estado = estado;
         this.categoria = categoria;
         this.estado = estado;
         this.placa = placa;
         this.ano = ano;
         this.marca = marca;
+        this.locacao = null;
+        this.valorCompra = valorCompra;
     }
     
     @Override
     public void locar(int dias, Calendar data, Cliente cliente) {
-        estado = Estado.VENDIDO;
+        estado = Estado.Vendido;
         locacao = new Locacao(cliente,data,dias,getValorDiariaLocacao());
     }
 
     @Override
     public void vender() {
-        estado = Estado.VENDIDO;
+        estado = Estado.Vendido;
     }
 
     @Override
     public void devolver() {
-        estado = Estado.DISPONIVEL;
+        estado = Estado.Disponivel;
     }
 
     @Override
@@ -90,10 +101,10 @@ public class Van extends Veiculo{
 
     @Override
     public double getValorDiariaLocacao() {
-        if (categoria == Categoria.POPULAR){
+        if (categoria == Categoria.Popular){
             return 200.00;
         }
-        else if (categoria == Categoria.INTERMEDIARIO){
+        else if (categoria == Categoria.Intermediario){
             return 400.00;
         }
         else

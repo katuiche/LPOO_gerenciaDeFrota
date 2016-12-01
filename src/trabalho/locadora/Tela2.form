@@ -154,7 +154,7 @@
           <StringArray count="4">
             <StringItem index="0" value="Novo"/>
             <StringItem index="1" value="Locado"/>
-            <StringItem index="2" value="Dispon&#xed;vel"/>
+            <StringItem index="2" value="Disponivel"/>
             <StringItem index="3" value="Vendido"/>
           </StringArray>
         </Property>
@@ -186,7 +186,7 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
             <StringItem index="0" value="Popular"/>
-            <StringItem index="1" value="Intermedi&#xe1;rio"/>
+            <StringItem index="1" value="Intermediario"/>
             <StringItem index="2" value="Luxo"/>
           </StringArray>
         </Property>

@@ -15,33 +15,43 @@ public class Automovel extends Veiculo{
 
     enum ModeloAutomovel{
         Gol, Celta, Palio;
+        public ModeloAutomovel checkString(String str){
+            for(ModeloAutomovel m:this.values()){
+                if(m.toString().equals(str))
+                    return m;
+            }
+            return this;
+        }
+        
     }
     
     private ModeloAutomovel modelo;
     
-    public Automovel(ModeloAutomovel modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca) {
+    public Automovel(ModeloAutomovel modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca, double valorCompra) {
         this.estado = estado;
         this.categoria = categoria;
         this.estado = estado;
         this.placa = placa;
         this.ano = ano;
         this.marca = marca;
+        this.locacao = null;
+        this.valorCompra = valorCompra;
     }
     
     @Override
     public void locar(int dias, Calendar data, Cliente cliente) {
-        estado = Estado.VENDIDO;
+        estado = Estado.Vendido;
         locacao = new Locacao(cliente,data,dias,getValorDiariaLocacao());
     }
 
     @Override
     public void vender() {
-        estado = Estado.VENDIDO;
+        estado = Estado.Vendido;
     }
 
     @Override
     public void devolver() {
-        estado = Estado.DISPONIVEL;
+        estado = Estado.Disponivel;
     }
 
     @Override
@@ -90,10 +100,10 @@ public class Automovel extends Veiculo{
 
     @Override
     public double getValorDiariaLocacao() {
-        if (categoria == Categoria.POPULAR){
+        if (categoria == Categoria.Popular){
             return 100.00;
         }
-        else if (categoria == Categoria.INTERMEDIARIO){
+        else if (categoria == Categoria.Intermediario){
             return 300.00;
         }
         

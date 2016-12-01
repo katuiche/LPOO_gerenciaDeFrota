@@ -26,11 +26,11 @@ public class TrabalhoLocadora {
         MotoDAO m = new MotoDAO();
         ClienteDAO c = new ClienteDAO();
         
-        Moto mm = new Moto(ModeloMoto.CG125, Categoria.INTERMEDIARIO, Estado.DISPONIVEL , "XXX1254", 1997, Marca.Fiat,155.00);
+        //Moto mm = new Moto(ModeloMoto.CG125, Categoria.INTERMEDIARIO, Estado.DISPONIVEL , "XXX1254", 1997, Marca.Fiat,155.00);
         
         Cliente cc = c.consultarCliente(1);
         
-        m.inserirMoto(mm);
+        //m.inserirMoto(mm);
         
         
         

@@ -15,6 +15,17 @@ public class Moto extends Veiculo{
     
     enum ModeloMoto{
         CG125, CBR500;
+        
+        public ModeloMoto checkString(String str){
+            //ModeloMoto mot;
+            for(ModeloMoto m:this.values()){
+                if(m.toString().equals(str))
+                    return m;
+            }
+            return null;
+        }
+        
+        
     }
 
     public Moto(ModeloMoto modelo, Categoria categoria, Estado estado , String placa, int ano, Marca marca,double valorCompra) {
@@ -34,19 +45,19 @@ public class Moto extends Veiculo{
     
     @Override
     public void locar(int dias, Calendar data, Cliente cliente) {
-        estado = Estado.VENDIDO;
+        estado = Estado.Vendido;
         locacao = new Locacao(cliente,data,dias,getValorDiariaLocacao());
         
     }
 
     @Override
     public void vender() {
-        estado = Estado.VENDIDO;
+        estado = Estado.Vendido;
     }
 
     @Override
     public void devolver() {
-        estado = Estado.DISPONIVEL;
+        estado = Estado.Disponivel;
     }
 
     @Override
@@ -99,10 +110,10 @@ public class Moto extends Veiculo{
 
     @Override
     public double getValorDiariaLocacao() {
-        if (categoria == Categoria.POPULAR){
+        if (categoria == Categoria.Popular){
             return 70.00;
         }
-        else if (categoria == Categoria.INTERMEDIARIO){
+        else if (categoria == Categoria.Intermediario){
             return 200.00;
         }
         else

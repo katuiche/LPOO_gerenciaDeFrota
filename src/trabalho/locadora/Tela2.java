@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,6 +40,7 @@ public class Tela2 extends javax.swing.JFrame {
         
         switch(tipoVeiculo){
             case 0:
+
                 comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CG125", "CBR500" }));
                 break;
             case 2:
@@ -95,13 +97,13 @@ public class Tela2 extends javax.swing.JFrame {
 
         jLabel4.setText("Estado:");
 
-        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Novo", "Locado", "Disponível", "Vendido" }));
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Novo", "Locado", "Disponivel", "Vendido" }));
 
         comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CG125", "CBR500" }));
 
         jLabel6.setText("Modelo:");
 
-        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Popular", "Intermediário", "Luxo" }));
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Popular", "Intermediario", "Luxo" }));
 
         jLabel7.setText("Categoria:");
 
@@ -202,17 +204,60 @@ public class Tela2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adicionarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarVeiculoActionPerformed
+        
+        
         System.out.println((String)comboModelo.getSelectedItem());
-        Veiculo v;
+        Veiculo v = null;
+        
+        Veiculo.Estado e = Veiculo.Estado.Disponivel;
+        e = e.checkString((String)comboEstado.getSelectedItem());
+        
+        Veiculo.Categoria c = Veiculo.Categoria.Popular;
+        c = c.checkString((String)comboCategoria.getSelectedItem());
+        
+        Veiculo.Marca m = Veiculo.Marca.Fiat;
+        m = m.checkString((String)comboMarca.getSelectedItem());
+        
+
+        String texVal = (textoValor.getText().equals("")) ? "0" : textoValor.getText();
+        //(String)comboModelo.getSelectedItem();
         switch(tipoVeiculo){
             case 0:
+            {
+                Moto.ModeloMoto mod = Moto.ModeloMoto.CG125;
+                mod = mod.checkString((String)comboModelo.getSelectedItem());
                 
-                v = new Moto((String)comboModelo.getSelectedItem(),(String)comboCategoria.getSelectedItem(),(String)comboEstado.getSelectedItem(),);
+                v = new Moto(mod,c,e,textoPlaca.getText(),2016,m,Double.parseDouble(texVal));
+                //Moto mo = (Moto)v;
+                
+                MotoDAO dao = new MotoDAO();
+                dao.inserirMoto((Moto)v);
+                
+                
                 break;
+            }   
+            case 1:
+            {
+                Van.ModeloVan mod = Van.ModeloVan.Kombi;
+                mod = mod.checkString((String)comboModelo.getSelectedItem());
+                
+                v = new Van(mod,c,e,textoPlaca.getText(),2016,m,Double.parseDouble(texVal));
+                
+                //MotoDAO dao = new MotoDAO();
+                //dao.inserirMoto(v);
+                break;
+            }
+            case 2:
+            {
+                Automovel.ModeloAutomovel mod = Automovel.ModeloAutomovel.Gol;
+                mod = mod.checkString((String)comboModelo.getSelectedItem());
+                
+                v = new Automovel(mod,c,e,textoPlaca.getText(),2016,m,Double.parseDouble(texVal));
+                break;
+            }
             
         }
-        
-        
+
     }//GEN-LAST:event_adicionarVeiculoActionPerformed
 
     private void textoValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoValorActionPerformed
