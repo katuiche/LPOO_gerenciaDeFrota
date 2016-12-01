@@ -125,6 +125,41 @@ public class MotoDAO {
         return motos;
     }
     
+        public List<Veiculo> listarMotoV() throws SQLException{
+        //Select para pegar as locações
+        Connection con = null;
+        PreparedStatement stmt = null;
+        PreparedStatement stmt2 = null;
+        List<Veiculo> motos = new ArrayList();
+        ResultSet resultado = null;
+        ResultSet resultado2 = null;
+        try{
+            con = ConnectionFactory.getConnection();
+            stmt = con.prepareStatement("SELECT * FROM veiculo");
+            stmt2 = con.prepareStatement("SELECT * FROM moto WHERE id_veiculo = ?");
+            resultado = stmt.executeQuery();
+            //LocacaoDAO l = new LocacaoDAO();
+            while (resultado.next()) {
+                stmt2.setString(1,resultado.getString("id"));
+                resultado2 = stmt2.executeQuery();
+                if (resultado2.next()){
+                    Moto moto = new Moto(ModeloMoto.valueOf(resultado2.getString("modelo")),  Categoria.valueOf(resultado.getString("categoria")) , Estado.valueOf(resultado.getString("estado")) , resultado.getString("placa"), resultado.getInt("ano"), Marca.valueOf(resultado.getString("marca")),resultado.getDouble("valorCompra"));
+                    motos.add(moto);
+                }
+            }
+            con.close();
+        }
+        catch (SQLException ex) {
+            throw new RuntimeException("Erro ao consultar motos no banco de dados. Origem="+ex.getMessage());
+        } finally{
+            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
+            try{con.close();}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
+        }
+    
+
+        return motos;
+    }
+    
     
     
     

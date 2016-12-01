@@ -385,7 +385,13 @@ public class Tela3 extends javax.swing.JFrame {
     }//GEN-LAST:event_textoCpfActionPerformed
 
     private void listar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listar1ActionPerformed
-        // TODO add your handling code here:
+        MotoDAO dao = new MotoDAO();
+        
+         try {
+             modeloTabelaVeiculo.setListaVeiculos((List<Veiculo>)dao.listarMotoV());
+         } catch (SQLException ex) {
+             Logger.getLogger(Tela3.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }//GEN-LAST:event_listar1ActionPerformed
 
     private void textoDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoDiasActionPerformed

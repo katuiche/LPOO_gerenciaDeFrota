@@ -21,10 +21,10 @@ import javax.swing.table.AbstractTableModel;
 public class ModeloTabelaVeiculo extends AbstractTableModel{
     private String[] colunas=new String[]{"Placa","Marca", "Modelo", "Ano","Preço da diária"};
 
-    private List<Cliente> lista=new ArrayList();
+    private List<Veiculo> lista=new ArrayList();
 
     
-    public ModeloTabelaVeiculo(List<Cliente> lista){
+    public ModeloTabelaVeiculo(List<Veiculo> lista){
         this.lista=lista;
     }
 
@@ -57,14 +57,13 @@ public class ModeloTabelaVeiculo extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Cliente customer = lista.get(rowIndex);
+        Veiculo customer = lista.get(rowIndex);
         switch (columnIndex) {
-            case 0: return customer.getId();//if column 0 (code)
-            case 1: return customer.getNome();//if column 1 (name)
-            case 2: return customer.getSobrenome();//if column 2 (birthday)
-            case 3: return customer.getRg();//if column 2 (birthday)
-            case 4: return customer.getCpf() ;
-            case 5: return customer.getEndereco() ;
+            case 0: return customer.getPlaca();//if column 0 (code)
+            case 1: return customer.getMarca();//if column 1 (name)
+            //case 2: return customer.getModelo();//if column 2 (birthday)
+            case 3: return customer.getAno();//if column 2 (birthday)
+            case 4: return customer.getValorDiariaLocacao() ;
             default : return null;
         }
     }
@@ -72,25 +71,22 @@ public class ModeloTabelaVeiculo extends AbstractTableModel{
     @Override
     public void setValueAt(Object value, int row, int col) {
         try {
-            Cliente customer = lista.get(row);
+            Veiculo customer = lista.get(row);
             switch (col) {
                 case 0:
-                    customer.setId((int) value); //if column 0 (code)
+                    customer.placa =((String) value); //if column 0 (code)
                     break;
                 case 1:
-                    customer.setNome((String) value);
+                    customer.marca = ((Veiculo.Marca) value);
                     break;
                 case 2:
-                    customer.setSobrenome((String) value);
+                    //customer.modelo((String) value);
                     break;
                 case 3:
-                    customer.setRg((String) value);
+                    customer.ano = ((int) value);
                     break;
                 case 4:
-                    customer.setCpf((String) value);
-                    break;
-                case 5:
-                    customer.setEndereco((String) value);
+                    customer.valorCompra = ((double) value);
                     break;
                 default:
             }
@@ -100,23 +96,23 @@ public class ModeloTabelaVeiculo extends AbstractTableModel{
         }
     }
 
-    public boolean removeCliente(Cliente customer) {
+    public boolean removeVeiculo(Veiculo customer) {
         int linha = this.lista.indexOf(customer);
         boolean result = this.lista.remove(customer);
         this.fireTableRowsDeleted(linha,linha);//update JTable
         return result;
     }
 
-    public void adicionaCliente(Cliente customer) {
+    public void adicionaVeiculo(Veiculo customer) {
         this.lista.add(customer);
         //this.fireTableDataChanged();
         this.fireTableRowsInserted(lista.size()-1,lista.size()-1);//update JTable
     }
 
-    public void setListaClientes(List<Cliente> clientes) {
-        this.lista = clientes;
+    public void setListaVeiculos(List<Veiculo> veiculos) {
+        this.lista = veiculos;
         this.fireTableDataChanged();
-        //this.fireTableRowsInserted(0,clientes.size()-1);//update JTable
+        //this.fireTableRowsInserted(0,veiculos.size()-1);//update JTable
     }
 
     public void limpaTabela() {
@@ -127,7 +123,7 @@ public class ModeloTabelaVeiculo extends AbstractTableModel{
         this.fireTableRowsDeleted(0,indice);//update JTable
     }
 
-    public Cliente getCliente(int linha){
+    public Veiculo getVeiculo(int linha){
         return lista.get(linha);
     }
     

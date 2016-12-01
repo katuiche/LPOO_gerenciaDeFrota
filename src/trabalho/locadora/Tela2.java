@@ -243,8 +243,8 @@ public class Tela2 extends javax.swing.JFrame {
                 
                 v = new Van(mod,c,e,textoPlaca.getText(),2016,m,Double.parseDouble(texVal));
                 
-                //MotoDAO dao = new MotoDAO();
-                //dao.inserirMoto(v);
+                VanDAO dao = new VanDAO();
+                dao.inserirMoto((Van)v);
                 break;
             }
             case 2:
@@ -253,6 +253,9 @@ public class Tela2 extends javax.swing.JFrame {
                 mod = mod.checkString((String)comboModelo.getSelectedItem());
                 
                 v = new Automovel(mod,c,e,textoPlaca.getText(),2016,m,Double.parseDouble(texVal));
+                AutomovelDAO dao = new AutomovelDAO();
+                dao.inserirMoto((Automovel)v);
+                
                 break;
             }
             
