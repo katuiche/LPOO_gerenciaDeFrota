@@ -61,7 +61,7 @@ public class ModeloTabelaVeiculo extends AbstractTableModel{
         switch (columnIndex) {
             case 0: return customer.getPlaca();//if column 0 (code)
             case 1: return customer.getMarca();//if column 1 (name)
-            //case 2: return customer.getModelo();//if column 2 (birthday)
+            case 2: return customer.getModeloString();//if column 2 (birthday)
             case 3: return customer.getAno();//if column 2 (birthday)
             case 4: return customer.getValorDiariaLocacao() ;
             default : return null;
@@ -80,7 +80,7 @@ public class ModeloTabelaVeiculo extends AbstractTableModel{
                     customer.marca = ((Veiculo.Marca) value);
                     break;
                 case 2:
-                    //customer.modelo((String) value);
+                    customer.modelo = ((String) value);
                     break;
                 case 3:
                     customer.ano = ((int) value);

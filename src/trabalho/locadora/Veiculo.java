@@ -47,6 +47,8 @@ public abstract class Veiculo implements VeiculoI{
         }
     }
     
+    abstract String getModeloString();
+    //abstract String getModeloString();
     
     
     double valorCompra;   
@@ -56,5 +58,6 @@ public abstract class Veiculo implements VeiculoI{
     Categoria categoria;
     Marca marca;
     Locacao locacao;
+    Object modelo;
     
 }

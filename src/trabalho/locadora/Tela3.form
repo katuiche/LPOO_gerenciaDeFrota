@@ -268,12 +268,13 @@
         <Component class="javax.swing.JComboBox" name="comboMarca">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="VW"/>
-                <StringItem index="1" value="GM"/>
-                <StringItem index="2" value="Fiat"/>
-                <StringItem index="3" value="Honda"/>
-                <StringItem index="4" value="Mercedes"/>
+              <StringArray count="6">
+                <StringItem index="0" value="Sem filtro"/>
+                <StringItem index="1" value="VW"/>
+                <StringItem index="2" value="GM"/>
+                <StringItem index="3" value="Fiat"/>
+                <StringItem index="4" value="Honda"/>
+                <StringItem index="5" value="Mercedes"/>
               </StringArray>
             </Property>
           </Properties>
@@ -289,10 +290,11 @@
         <Component class="javax.swing.JComboBox" name="comboTipo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Motocicleta"/>
-                <StringItem index="1" value="Van"/>
-                <StringItem index="2" value="Autom&#xf3;vel"/>
+              <StringArray count="4">
+                <StringItem index="0" value="Sem filtro"/>
+                <StringItem index="1" value="Motocicleta"/>
+                <StringItem index="2" value="Van"/>
+                <StringItem index="3" value="Automovel"/>
               </StringArray>
             </Property>
           </Properties>
@@ -313,10 +315,11 @@
         <Component class="javax.swing.JComboBox" name="comboCategoria">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Popular"/>
-                <StringItem index="1" value="Intermedi&#xe1;rio"/>
-                <StringItem index="2" value="Luxo"/>
+              <StringArray count="4">
+                <StringItem index="0" value="Sem filtro"/>
+                <StringItem index="1" value="Popular"/>
+                <StringItem index="2" value="Intermediario"/>
+                <StringItem index="3" value="Luxo"/>
               </StringArray>
             </Property>
           </Properties>
@@ -366,9 +369,11 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="textoData" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="textoData" min="-2" pref="90" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="listar2" min="-2" pref="121" max="-2" attributes="0"/>
+                  <Component id="Voltar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="locarVeiculo" min="-2" pref="121" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -382,7 +387,8 @@
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="textoData" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="listar2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="locarVeiculo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Voltar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -415,12 +421,20 @@
             <Property name="text" type="java.lang.String" value="Data da loca&#xe7;&#xe3;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="listar2">
+        <Component class="javax.swing.JButton" name="locarVeiculo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Locar Ve&#xed;culo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listar2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="locarVeiculoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="Voltar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Voltar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VoltarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

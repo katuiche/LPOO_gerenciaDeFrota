@@ -38,7 +38,7 @@
                   <Group type="102" attributes="0">
                       <Component id="listar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="listar1" min="-2" max="-2" attributes="0"/>
+                      <Component id="voltar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="701" max="32767" attributes="0"/>
                       <Component id="limpar" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -56,7 +56,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="listar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="limpar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="listar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="voltar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -99,12 +99,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="limparActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="listar1">
+    <Component class="javax.swing.JButton" name="voltar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Voltar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listar1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voltarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

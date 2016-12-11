@@ -79,10 +79,11 @@ public class Tela2 extends javax.swing.JFrame {
         comboCategoria = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        textoValor = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        textoPlaca = new javax.swing.JTextField();
         adicionarVeiculo = new javax.swing.JButton();
+        textoPlaca = new javax.swing.JFormattedTextField();
+        textoValor = new javax.swing.JFormattedTextField();
+        Voltar = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -109,24 +110,29 @@ public class Tela2 extends javax.swing.JFrame {
 
         jLabel8.setText("Valor da compra:");
 
-        textoValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoValorActionPerformed(evt);
-            }
-        });
-
         jLabel9.setText("Placa:");
-
-        textoPlaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoPlacaActionPerformed(evt);
-            }
-        });
 
         adicionarVeiculo.setText("Adicionar Veículo");
         adicionarVeiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adicionarVeiculoActionPerformed(evt);
+            }
+        });
+
+        try {
+            textoPlaca.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("UUU-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        textoPlaca.setToolTipText("");
+
+        textoValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        textoValor.setToolTipText("");
+
+        Voltar.setText("Voltar");
+        Voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarActionPerformed(evt);
             }
         });
 
@@ -136,40 +142,39 @@ public class Tela2 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Voltar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(adicionarVeiculo))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                                        .addGap(52, 52, 52)
                                         .addComponent(comboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                                 .addComponent(jLabel4))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel6)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboEstado, 0, 154, Short.MAX_VALUE)
-                            .addComponent(comboModelo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(comboCategoria, 0, 125, Short.MAX_VALUE)
+                                    .addComponent(textoValor))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel6))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textoValor)
-                            .addComponent(comboCategoria, 0, 125, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(textoPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(adicionarVeiculo)))
+                            .addComponent(textoPlaca)
+                            .addComponent(comboEstado, 0, 154, Short.MAX_VALUE)
+                            .addComponent(comboModelo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -191,12 +196,14 @@ public class Tela2 extends javax.swing.JFrame {
                     .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textoValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
+                    .addComponent(jLabel9)
                     .addComponent(textoPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(textoValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(adicionarVeiculo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adicionarVeiculo)
+                    .addComponent(Voltar))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -205,71 +212,76 @@ public class Tela2 extends javax.swing.JFrame {
 
     private void adicionarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarVeiculoActionPerformed
         
-        
-        System.out.println((String)comboModelo.getSelectedItem());
-        Veiculo v = null;
-        
-        Veiculo.Estado e = Veiculo.Estado.Disponivel;
-        e = e.checkString((String)comboEstado.getSelectedItem());
-        
-        Veiculo.Categoria c = Veiculo.Categoria.Popular;
-        c = c.checkString((String)comboCategoria.getSelectedItem());
-        
-        Veiculo.Marca m = Veiculo.Marca.Fiat;
-        m = m.checkString((String)comboMarca.getSelectedItem());
-        
-
-        String texVal = (textoValor.getText().equals("")) ? "0" : textoValor.getText();
-        //(String)comboModelo.getSelectedItem();
-        switch(tipoVeiculo){
-            case 0:
-            {
-                Moto.ModeloMoto mod = Moto.ModeloMoto.CG125;
-                mod = mod.checkString((String)comboModelo.getSelectedItem());
-                
-                v = new Moto(mod,c,e,textoPlaca.getText(),2016,m,Double.parseDouble(texVal));
-                //Moto mo = (Moto)v;
-                
-                MotoDAO dao = new MotoDAO();
-                dao.inserirMoto((Moto)v);
-                
-                
-                break;
-            }   
-            case 1:
-            {
-                Van.ModeloVan mod = Van.ModeloVan.Kombi;
-                mod = mod.checkString((String)comboModelo.getSelectedItem());
-                
-                v = new Van(mod,c,e,textoPlaca.getText(),2016,m,Double.parseDouble(texVal));
-                
-                VanDAO dao = new VanDAO();
-                dao.inserirMoto((Van)v);
-                break;
-            }
-            case 2:
-            {
-                Automovel.ModeloAutomovel mod = Automovel.ModeloAutomovel.Gol;
-                mod = mod.checkString((String)comboModelo.getSelectedItem());
-                
-                v = new Automovel(mod,c,e,textoPlaca.getText(),2016,m,Double.parseDouble(texVal));
-                AutomovelDAO dao = new AutomovelDAO();
-                dao.inserirMoto((Automovel)v);
-                
-                break;
+        try{
+            
+            if(textoPlaca.getText().equals("   -    ")){
+                throw new Exception("Insira um valor para a Placa do veículo.");
             }
             
+            Veiculo v = null;
+
+            Veiculo.Estado e = Veiculo.Estado.Disponivel;
+            e = e.checkString((String)comboEstado.getSelectedItem());
+
+            Veiculo.Categoria c = Veiculo.Categoria.Popular;
+            c = c.checkString((String)comboCategoria.getSelectedItem());
+
+            Veiculo.Marca m = Veiculo.Marca.Fiat;
+            m = m.checkString((String)comboMarca.getSelectedItem());
+
+
+            String texVal = (textoValor.getText().equals("")) ? "0" : textoValor.getText();
+            //(String)comboModelo.getSelectedItem();
+            switch(tipoVeiculo){
+                case 0:
+                {
+                    Moto.ModeloMoto mod = Moto.ModeloMoto.CG125;
+                    mod = mod.checkString((String)comboModelo.getSelectedItem());
+
+                    v = new Moto(mod,c,e,textoPlaca.getText(),2016,m,Double.parseDouble(texVal));
+                    //Moto mo = (Moto)v;
+
+                    MotoDAO dao = new MotoDAO();
+                    dao.inserirMoto((Moto)v);
+
+
+                    break;
+                }   
+                case 1:
+                {
+                    Van.ModeloVan mod = Van.ModeloVan.Kombi;
+                    mod = mod.checkString((String)comboModelo.getSelectedItem());
+
+                    v = new Van(mod,c,e,textoPlaca.getText(),2016,m,Double.parseDouble(texVal));
+
+                    VanDAO dao = new VanDAO();
+                    dao.inserirMoto((Van)v);
+                    break;
+                }
+                case 2:
+                {
+                    Automovel.ModeloAutomovel mod = Automovel.ModeloAutomovel.Gol;
+                    mod = mod.checkString((String)comboModelo.getSelectedItem());
+
+                    v = new Automovel(mod,c,e,textoPlaca.getText(),2016,m,Double.parseDouble(texVal));
+                    AutomovelDAO dao = new AutomovelDAO();
+                    dao.inserirMoto((Automovel)v);
+
+                    break;
+                }
+
+            }
+     JOptionPane.showMessageDialog(null,"Veículo inserido", "Mensagem",JOptionPane.PLAIN_MESSAGE);
+    }catch(Exception ex){
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_adicionarVeiculoActionPerformed
 
-    private void textoValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoValorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoValorActionPerformed
-
-    private void textoPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoPlacaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoPlacaActionPerformed
+    private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        new Tela0().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_VoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +324,7 @@ public class Tela2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Voltar;
     private javax.swing.JButton adicionarVeiculo;
     private javax.swing.JComboBox<String> comboCategoria;
     private javax.swing.JComboBox<String> comboEstado;
@@ -325,7 +338,7 @@ public class Tela2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField textoPlaca;
-    private javax.swing.JTextField textoValor;
+    private javax.swing.JFormattedTextField textoPlaca;
+    private javax.swing.JFormattedTextField textoValor;
     // End of variables declaration//GEN-END:variables
 }

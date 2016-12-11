@@ -78,7 +78,8 @@ public class Tela3 extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         textoData = new javax.swing.JFormattedTextField();
         jLabel15 = new javax.swing.JLabel();
-        listar2 = new javax.swing.JButton();
+        locarVeiculo = new javax.swing.JButton();
+        Voltar = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -179,17 +180,17 @@ public class Tela3 extends javax.swing.JFrame {
 
         jLabel7.setText("Selecione um veículo:");
 
-        comboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VW", "GM", "Fiat", "Honda", "Mercedes" }));
+        comboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sem filtro", "VW", "GM", "Fiat", "Honda", "Mercedes" }));
 
         jLabel8.setText("Marca:");
 
-        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Motocicleta", "Van", "Automóvel" }));
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sem filtro", "Motocicleta", "Van", "Automovel" }));
 
         jLabel9.setText("Categoria:");
 
         jLabel10.setText("Tipo:");
 
-        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Popular", "Intermediário", "Luxo" }));
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sem filtro", "Popular", "Intermediario", "Luxo" }));
 
         tabelaVeiculos.setModel(modeloTabelaVeiculo);
         tabelaVeiculos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -274,10 +275,17 @@ public class Tela3 extends javax.swing.JFrame {
 
         jLabel15.setText("Data da locação:");
 
-        listar2.setText("Locar Veículo");
-        listar2.addActionListener(new java.awt.event.ActionListener() {
+        locarVeiculo.setText("Locar Veículo");
+        locarVeiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listar2ActionPerformed(evt);
+                locarVeiculoActionPerformed(evt);
+            }
+        });
+
+        Voltar.setText("Voltar");
+        Voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarActionPerformed(evt);
             }
         });
 
@@ -293,9 +301,11 @@ public class Tela3 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textoData, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textoData, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(listar2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Voltar)
+                .addGap(18, 18, 18)
+                .addComponent(locarVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -307,7 +317,8 @@ public class Tela3 extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(textoData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
-                    .addComponent(listar2))
+                    .addComponent(locarVeiculo)
+                    .addComponent(Voltar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -361,7 +372,7 @@ public class Tela3 extends javax.swing.JFrame {
        //Pega a linha clicada
         linhaClicadaCliente = tabelaClientes.rowAtPoint(evt.getPoint());
         //Pega o cliente da linha clidada
-        Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaCliente);
+        //Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaCliente);
         //Seta os dados nos componentes
         /*textoNome.setText(cliente.getNome());
         sobrenome.setText(cliente.getSobrenome());
@@ -385,26 +396,132 @@ public class Tela3 extends javax.swing.JFrame {
     }//GEN-LAST:event_textoCpfActionPerformed
 
     private void listar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listar1ActionPerformed
-        MotoDAO dao = new MotoDAO();
-        
-         try {
-             modeloTabelaVeiculo.setListaVeiculos((List<Veiculo>)dao.listarMotoV());
-         } catch (SQLException ex) {
-             Logger.getLogger(Tela3.class.getName()).log(Level.SEVERE, null, ex);
-         }
+       mostrarListaVeiculos();
     }//GEN-LAST:event_listar1ActionPerformed
 
     private void textoDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoDiasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoDiasActionPerformed
 
-    private void listar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listar2ActionPerformed
+    private void locarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locarVeiculoActionPerformed
+        
+        SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance(); 
+        try { 
+            cal.setTime(sf.parse(textoData.getText()));
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null,"Erro ao converter as datas.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaCliente);
+        try{
+            if(textoDias.getText().equals("")){
+                    throw new Exception("Insira um valor para o número de dias da locação.");
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null,ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        
+        //Locacao l = new Locacao(cliente,cal,,30);
+        //Pega o veiculo da linha clidada
+        Veiculo veiculo = modeloTabelaVeiculo.getVeiculo(linhaClicadaVeiculo);
+        veiculo.locar(Integer.parseInt(textoDias.getText()),cal,cliente);
+        
+        LocacaoDAO daoLoc = new LocacaoDAO();
+        daoLoc.inserirLocacao(veiculo.getLocacao());
+        
+        VeiculoDAO daoV = new VeiculoDAO();
+        daoV.atualizarVeiculo(veiculo);
+        
+        mostrarListaVeiculos();
+        JOptionPane.showMessageDialog(null,"Locação realizada", "Erro",JOptionPane.PLAIN_MESSAGE);
+        
+        
+        
+    }//GEN-LAST:event_locarVeiculoActionPerformed
+
+    private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        new Tela0().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_VoltarActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    
+    public void mostrarListaVeiculos(){
+        MotoDAO dao1 = new MotoDAO();
+        VanDAO dao2 = new VanDAO();
+        AutomovelDAO dao3 = new AutomovelDAO();
+        
+        Veiculo.Categoria c = null;
+        Veiculo.Marca m = null;
+        Veiculo.Estado e = null;
+                
+        List<Veiculo> lista = new ArrayList<Veiculo>();
+        
+        if(!"Sem filtro".equals((String)comboCategoria.getSelectedItem())){
+            c = Veiculo.Categoria.Popular;
+            c = c.checkString((String)comboCategoria.getSelectedItem());
+        }
+
+        if(!"Sem filtro".equals((String)comboMarca.getSelectedItem())){
+            m = Veiculo.Marca.Fiat;
+            m = m.checkString((String)comboMarca.getSelectedItem());
+        }
+        
+        e = Veiculo.Estado.Disponivel;
+        
+        Veiculo v;
+        
+        
+         try {
+             
+             switch((String)comboTipo.getSelectedItem()){
+                 case "Motocicleta":
+                 {
+                    v = new Moto(null,c,e,null,0,m,0d);
+                    lista.addAll(dao1.filtrarMoto(v));
+                    break;
+                 }
+                case "Van":
+                {
+
+                    v = new Van(null,c,e,null,0,m,0d);
+                    lista.addAll(dao2.filtrarVan(v));
+                    break;
+                }
+                case "Automovel":
+                {
+
+                    v = new Automovel(null,c,e,null,0,m,0d);
+                    lista.addAll(dao3.filtrarAutomovel(v));
+                    break;
+                }
+                default:
+                    v = new Moto(null,c,e,null,0,m,0d);
+                    lista.addAll(dao1.filtrarMoto(v));
+                    v = new Van(null,c,e,null,0,m,0d);
+                    lista.addAll(dao2.filtrarVan(v));
+                    v = new Automovel(null,c,e,null,0,m,0d);
+                    lista.addAll(dao3.filtrarAutomovel(v));
+                    break;
+                 
+             }
+             
+             //lista.addAll(dao2.listarMoto());
+             //lista.addAll(dao3.listarMoto());
+             
+             modeloTabelaVeiculo.setListaVeiculos(lista);
+             linhaClicadaVeiculo = -1;
+         } catch (SQLException ex) {
+             Logger.getLogger(Tela3.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+    
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -445,6 +562,7 @@ public class Tela3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Voltar;
     private javax.swing.JComboBox<String> comboCategoria;
     private javax.swing.JComboBox<String> comboMarca;
     private javax.swing.JComboBox<String> comboTipo;
@@ -464,7 +582,7 @@ public class Tela3 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton listar;
     private javax.swing.JButton listar1;
-    private javax.swing.JButton listar2;
+    private javax.swing.JButton locarVeiculo;
     private javax.swing.JScrollPane scrollPanel;
     private javax.swing.JScrollPane scrollPanel1;
     private javax.swing.JTable tabelaClientes;

@@ -26,11 +26,11 @@ public class Tela5 extends javax.swing.JFrame {
     /**
      * Creates new form TabelaClienteJFrame
      */
-     private ModeloTabelaCliente modeloTabela;
+     private ModeloTabelaVeiculo modeloTabela;
      private int linhaClicada=-1;
     
     public Tela5() {
-        modeloTabela = new ModeloTabelaCliente();
+        modeloTabela = new ModeloTabelaVeiculo();
         initComponents();
         //Registra o evento da modificação da tabela
         //TabelaEscutadorEvento escutador = new TabelaEscutadorEvento();
@@ -57,10 +57,10 @@ public class Tela5 extends javax.swing.JFrame {
         comboCategoria = new javax.swing.JComboBox<>();
         scrollPanel1 = new javax.swing.JScrollPane();
         tabela1 = new javax.swing.JTable();
-        listar1 = new javax.swing.JButton();
+        filtrar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        listar2 = new javax.swing.JButton();
-        listar3 = new javax.swing.JButton();
+        venderVeiculo = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -69,17 +69,17 @@ public class Tela5 extends javax.swing.JFrame {
 
         jLabel7.setText("Selecione um veículo:");
 
-        comboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VW", "GM", "Fiat", "Honda", "Mercedes" }));
+        comboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sem filtro", "VW", "GM", "Fiat", "Honda", "Mercedes" }));
 
         jLabel8.setText("Marca:");
 
-        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Motocicleta", "Van", "Automóvel" }));
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sem filtro", "Motocicleta", "Van", "Automovel" }));
 
         jLabel9.setText("Categoria:");
 
         jLabel10.setText("Tipo:");
 
-        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Popular", "Intermediário", "Luxo" }));
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sem filtro", "Popular", "Intermediario", "Luxo" }));
 
         tabela1.setModel(modeloTabela);
         tabela1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,10 +89,10 @@ public class Tela5 extends javax.swing.JFrame {
         });
         scrollPanel1.setViewportView(tabela1);
 
-        listar1.setText("Filtrar");
-        listar1.addActionListener(new java.awt.event.ActionListener() {
+        filtrar.setText("Filtrar");
+        filtrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listar1ActionPerformed(evt);
+                filtrarActionPerformed(evt);
             }
         });
 
@@ -114,7 +114,7 @@ public class Tela5 extends javax.swing.JFrame {
                                     .addComponent(jLabel7))
                                 .addGap(18, 18, 18))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(listar1)
+                                .addComponent(filtrar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -135,7 +135,7 @@ public class Tela5 extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(listar1))
+                    .addComponent(filtrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -147,17 +147,17 @@ public class Tela5 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        listar2.setText("Vender Veículo");
-        listar2.addActionListener(new java.awt.event.ActionListener() {
+        venderVeiculo.setText("Vender Veículo");
+        venderVeiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listar2ActionPerformed(evt);
+                venderVeiculoActionPerformed(evt);
             }
         });
 
-        listar3.setText("Voltar");
-        listar3.addActionListener(new java.awt.event.ActionListener() {
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listar3ActionPerformed(evt);
+                voltarActionPerformed(evt);
             }
         });
 
@@ -167,9 +167,9 @@ public class Tela5 extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(listar3)
+                .addComponent(voltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(listar2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(venderVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -177,8 +177,8 @@ public class Tela5 extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(listar2)
-                    .addComponent(listar3))
+                    .addComponent(venderVeiculo)
+                    .addComponent(voltar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -209,21 +209,100 @@ public class Tela5 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabela1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela1MouseClicked
-        // TODO add your handling code here:
+        linhaClicada = tabela1.rowAtPoint(evt.getPoint());
     }//GEN-LAST:event_tabela1MouseClicked
 
-    private void listar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listar1ActionPerformed
+    private void filtrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrarActionPerformed
+        mostrarListaVeiculos();
+    }//GEN-LAST:event_filtrarActionPerformed
 
-    private void listar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listar2ActionPerformed
+    private void venderVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_venderVeiculoActionPerformed
+        Veiculo veiculo = modeloTabela.getVeiculo(linhaClicada);
+        veiculo.vender();
+        
+        VeiculoDAO daoV = new VeiculoDAO();
+        daoV.atualizarVeiculo(veiculo);
+        
+        mostrarListaVeiculos();
+        JOptionPane.showMessageDialog(null,"Venda realizada", "Erro",JOptionPane.PLAIN_MESSAGE);
+    }//GEN-LAST:event_venderVeiculoActionPerformed
 
-    private void listar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listar3ActionPerformed
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        new Tela0().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_voltarActionPerformed
 
+    public void mostrarListaVeiculos(){
+        MotoDAO dao1 = new MotoDAO();
+        VanDAO dao2 = new VanDAO();
+        AutomovelDAO dao3 = new AutomovelDAO();
+        
+        Veiculo.Categoria c = null;
+        Veiculo.Marca m = null;
+        Veiculo.Estado e = null;
+                
+        List<Veiculo> lista = new ArrayList<Veiculo>();
+        
+        if(!"Sem filtro".equals((String)comboCategoria.getSelectedItem())){
+            c = Veiculo.Categoria.Popular;
+            c = c.checkString((String)comboCategoria.getSelectedItem());
+        }
+
+        if(!"Sem filtro".equals((String)comboMarca.getSelectedItem())){
+            m = Veiculo.Marca.Fiat;
+            m = m.checkString((String)comboMarca.getSelectedItem());
+        }
+        
+        e = Veiculo.Estado.Disponivel;
+        
+        Veiculo v;
+        
+        
+         try {
+             
+             switch((String)comboTipo.getSelectedItem()){
+                 case "Motocicleta":
+                 {
+                    v = new Moto(null,c,e,null,0,m,0d);
+                    lista.addAll(dao1.filtrarMoto(v));
+                    break;
+                 }
+                case "Van":
+                {
+
+                    v = new Van(null,c,e,null,0,m,0d);
+                    lista.addAll(dao2.filtrarVan(v));
+                    break;
+                }
+                case "Automovel":
+                {
+
+                    v = new Automovel(null,c,e,null,0,m,0d);
+                    lista.addAll(dao3.filtrarAutomovel(v));
+                    break;
+                }
+                default:
+                    v = new Moto(null,c,e,null,0,m,0d);
+                    lista.addAll(dao1.filtrarMoto(v));
+                    v = new Van(null,c,e,null,0,m,0d);
+                    lista.addAll(dao2.filtrarVan(v));
+                    v = new Automovel(null,c,e,null,0,m,0d);
+                    lista.addAll(dao3.filtrarAutomovel(v));
+                    break;
+                 
+             }
+             
+             //lista.addAll(dao2.listarMoto());
+             //lista.addAll(dao3.listarMoto());
+             
+             modeloTabela.setListaVeiculos(lista);
+             linhaClicada = -1;
+         } catch (SQLException ex) {
+             Logger.getLogger(Tela3.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -278,6 +357,7 @@ public class Tela5 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboCategoria;
     private javax.swing.JComboBox<String> comboMarca;
     private javax.swing.JComboBox<String> comboTipo;
+    private javax.swing.JButton filtrar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -285,10 +365,9 @@ public class Tela5 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton listar1;
-    private javax.swing.JButton listar2;
-    private javax.swing.JButton listar3;
     private javax.swing.JScrollPane scrollPanel1;
     private javax.swing.JTable tabela1;
+    private javax.swing.JButton venderVeiculo;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

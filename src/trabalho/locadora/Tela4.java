@@ -51,7 +51,7 @@ public class Tela4 extends javax.swing.JFrame {
         tabela = new javax.swing.JTable();
         listar = new javax.swing.JButton();
         limpar = new javax.swing.JButton();
-        listar1 = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -80,10 +80,10 @@ public class Tela4 extends javax.swing.JFrame {
             }
         });
 
-        listar1.setText("Voltar");
-        listar1.addActionListener(new java.awt.event.ActionListener() {
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listar1ActionPerformed(evt);
+                voltarActionPerformed(evt);
             }
         });
 
@@ -98,7 +98,7 @@ public class Tela4 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(listar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(listar1)
+                        .addComponent(voltar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 701, Short.MAX_VALUE)
                         .addComponent(limpar)))
                 .addContainerGap())
@@ -112,7 +112,7 @@ public class Tela4 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listar)
                     .addComponent(limpar)
-                    .addComponent(listar1))
+                    .addComponent(voltar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -147,9 +147,10 @@ public class Tela4 extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tabelaMouseClicked
 
-    private void listar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listar1ActionPerformed
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        new Tela0().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,8 +194,8 @@ public class Tela4 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton limpar;
     private javax.swing.JButton listar;
-    private javax.swing.JButton listar1;
     private javax.swing.JScrollPane scrollPanel;
     private javax.swing.JTable tabela;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

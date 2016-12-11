@@ -88,6 +88,76 @@ public class VeiculoDAO {
     }
     
    
-    
+    public void atualizarVeiculo(Veiculo veiculo){
+        Connection con = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            con = ConnectionFactory.getConnection();       
+            
+            stmt = con.prepareStatement("UPDATE veiculo set marca = ?,estado=?,categoria=?,placa=?,locacao=?,ano=?,valorCompra=? WHERE placa = ?",PreparedStatement.RETURN_GENERATED_KEYS);            
+            stmt.setString(1, veiculo.getMarca().toString());
+            stmt.setString(2, veiculo.getEstado().toString());
+            stmt.setString(3, veiculo.getCategoria().toString());
+            stmt.setString(4, veiculo.getPlaca());
+            if (veiculo.getLocacao() != null){
+                stmt.setString(5, Integer.toString(veiculo.getLocacao().getId()));
+            }
+            else {
+                stmt.setString(5,"0");
+            }
+            
+            stmt.setString(6, Integer.toString(veiculo.getAno()));
+            
+            if (veiculo instanceof Moto){
+                stmt.setString(7, Double.toString(((Moto)veiculo).getValorCompra()));
+            }
+            if (veiculo instanceof Van){
+                stmt.setString(7, Double.toString(((Van)veiculo).getValorCompra()));
+            }
+            if (veiculo instanceof Automovel){
+                stmt.setString(7, Double.toString(((Automovel)veiculo).getValorCompra()));
+            }
+            stmt.setString(8, veiculo.getPlaca());
+            
+           
+            stmt.executeUpdate();
+            
+            //int id = lerIdVeiculo(stmt);
+            
+            /*String modelo;
+            
+            if (veiculo instanceof Moto){
+                stmt = con.prepareStatement("INSERT INTO moto(id_veiculo,modelo) VALUES (?,?)",PreparedStatement.RETURN_GENERATED_KEYS);  
+                Moto m = (Moto) veiculo;
+                modelo = m.getModelo().toString();
+            }
+            else if (veiculo instanceof Automovel){
+                stmt = con.prepareStatement("INSERT INTO automovel(id_veiculo,modelo) VALUES (?,?)",PreparedStatement.RETURN_GENERATED_KEYS);    
+                Automovel a = (Automovel) veiculo;
+                modelo = a.getModelo().toString();
+            }
+            else {
+                stmt = con.prepareStatement("INSERT INTO van(id_veiculo,modelo) VALUES (?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+                Van v = (Van) veiculo;
+                modelo = v.getModelo().toString();
+            }
+            
+            stmt.setString(1, Integer.toString(id));
+            stmt.setString(2, modelo);*/
+            
+            
+        }
+        catch (SQLException ex) {
+            throw new RuntimeException("Erro ao atualizar um veículo no banco de dados. Origem="+ex.getMessage());
+        } finally{
+            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
+            try{con.close();}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
+        }
+        
+        
+        
+        
+    }
     
 }

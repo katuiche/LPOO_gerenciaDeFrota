@@ -168,36 +168,40 @@ public class Tela0 extends javax.swing.JFrame {
 
     private void listarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarClientesActionPerformed
         new Tela1().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_listarClientesActionPerformed
 
     private void registrarVanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarVanActionPerformed
         new Tela2(1).setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_registrarVanActionPerformed
 
     private void registrarMotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarMotoActionPerformed
         new Tela2(0).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_registrarMotoActionPerformed
 
     private void registrarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarAutoActionPerformed
         new Tela2(2).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_registrarAutoActionPerformed
 
     private void locarVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locarVeiculosActionPerformed
-        try{
-        //new Tela3().setVisible(true);
-        throw new Exception("oi");
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(null,"Erro ao conectar com o banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
+
+        new Tela3().setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_locarVeiculosActionPerformed
 
     private void devolverVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverVeiculosActionPerformed
         new Tela4().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_devolverVeiculosActionPerformed
 
     private void venderVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_venderVeiculosActionPerformed
         new Tela5().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_venderVeiculosActionPerformed
 
     /**

@@ -64,6 +64,7 @@ public class Tela1 extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         sobrenome = new javax.swing.JTextField();
         cpf = new javax.swing.JFormattedTextField();
+        voltar = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -141,6 +142,13 @@ public class Tela1 extends javax.swing.JFrame {
         }
         cpf.setToolTipText("");
 
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -169,13 +177,16 @@ public class Tela1 extends javax.swing.JFrame {
                                         .addComponent(jLabel3)
                                         .addGap(39, 39, 39)
                                         .addComponent(cpf))))
-                            .addComponent(endereco)))
+                            .addComponent(endereco))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(novo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(atualizar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(atualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(voltar)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +210,8 @@ public class Tela1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(novo)
-                    .addComponent(atualizar))
+                    .addComponent(atualizar)
+                    .addComponent(voltar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -251,13 +263,16 @@ public class Tela1 extends javax.swing.JFrame {
             List<Cliente> listaExcluir = new ArrayList();
             for (int i = 0; i < linhasSelecionadas.length; i++) {
                 Cliente cliente = modeloTabela.getCliente(linhasSelecionadas[i]);
-                dao.excluirCliente(cliente);
+                
                 listaExcluir.add(cliente);
 
             }
             for(Cliente cliente:listaExcluir){
-                if(dao.checarLocacao(cliente.getId()) > 0)
+                if(dao.checarLocacao(cliente.getId()) < 1){
+                    dao.excluirCliente(cliente);
                     modeloTabela.removeCliente(cliente);
+                    JOptionPane.showMessageDialog(null,"Cliente excluido.", "Mensagem",JOptionPane.PLAIN_MESSAGE);
+                }
                 else
                     throw new Exception("O cliente tem veículos locados");
             }
@@ -289,6 +304,7 @@ public class Tela1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Erro ao atualizar no banco de dados. E="+ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
         modeloTabela.adicionaCliente(cliente);
+        JOptionPane.showMessageDialog(null,"Cliente inserido.", "Mensagem",JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_novoActionPerformed
 
     private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
@@ -308,6 +324,7 @@ public class Tela1 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Erro ao atualizar no banco de dados. E="+ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
             //Atualiza tabela
+            JOptionPane.showMessageDialog(null,"Cliente atualizado.", "Mensagem",JOptionPane.PLAIN_MESSAGE);
             modeloTabela.fireTableRowsUpdated(linhaClicada, linhaClicada);
             
         }
@@ -335,6 +352,11 @@ public class Tela1 extends javax.swing.JFrame {
     private void rgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rgActionPerformed
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        new Tela0().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,5 +413,6 @@ public class Tela1 extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollPanel;
     private javax.swing.JTextField sobrenome;
     private javax.swing.JTable tabela;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

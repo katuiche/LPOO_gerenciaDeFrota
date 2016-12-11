@@ -46,7 +46,7 @@ public class Van extends Veiculo{
     
     @Override
     public void locar(int dias, Calendar data, Cliente cliente) {
-        estado = Estado.Vendido;
+        estado = Estado.Locado;
         locacao = new Locacao(cliente,data,dias,getValorDiariaLocacao());
     }
 
@@ -119,4 +119,10 @@ public class Van extends Veiculo{
     public ModeloVan getModelo(){
         return modelo;
     }
+    
+    public String getModeloString(){
+        return modelo.toString();
+        
+    }
+    
 }
